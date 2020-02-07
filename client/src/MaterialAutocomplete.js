@@ -107,7 +107,7 @@ export default function GoogleMaps({ label, setInput }) {
         <TextField
           {...params}
           label={label || 'Add a location'}
-          variant='outlined'
+          variant='standard'
           fullWidth
           onChange={handleChange}
         />

@@ -13,6 +13,7 @@ import MaterialAutocomplete from './MaterialAutocomplete';
 import { fetchData } from './api';
 import Results from './Results';
 import DirectionsMockup from './DirectionsMockup';
+import SelectionMockup from './SelectionMockup';
 // If you want to use the provided css
 // import 'react-google-places-autocomplete/dist/assets/index.css';
 // const initialResource = fetchData(
@@ -218,6 +219,7 @@ export default function App() {
             </div>
             <hr className='my-8 border-b-2 border-gray-200'></hr>
             {/* <Results resource={resource}></Results> */}
+            <SelectionMockup></SelectionMockup>
             <DirectionsMockup></DirectionsMockup>
           </div>
         </div>
