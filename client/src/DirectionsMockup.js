@@ -6,7 +6,7 @@ import ShareIcon from '@material-ui/icons/Share';
 import MapIcon from '@material-ui/icons/Map';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 
-export default function Results({ resource }) {
+export default function DirectionsMockup({ resource }) {
   return (
     <Layout>
       {/* <DirectionsDetail></DirectionsDetail> */}

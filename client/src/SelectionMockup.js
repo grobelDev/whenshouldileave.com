@@ -175,7 +175,7 @@ function SelectionResultsPreview() {
         ></img>
         <div className='flex justify-center my-4'>
           <button className='px-4 py-2 font-bold text-white bg-blue-500 border-b-4 border-blue-700 rounded hover:bg-blue-400 hover:border-blue-500'>
-            When Should I Leave?
+            Get Time Estimates
           </button>
         </div>
       </StyledListItem>
