@@ -22,9 +22,14 @@ import {
 import { fetchData } from './api';
 // import Results from './Results';
 
+import Navbar from './Navbar';
+import HomePage from './HomePage';
+import DirectionsPage from './DirectionsPage';
+import ResultsPage from './ResultsPage';
+
 import SplashPageMockup from './SplashPageMockup';
 import DirectionsMockup from './DirectionsMockup';
-import SelectionMockup from './SelectionMockup';
+import ResultsMockup from './ResultsMockup';
 
 const routes = [
   {
@@ -33,19 +38,15 @@ const routes = [
     title: 'SplashPage Mockup'
   },
   {
-    path: '/SelectionMockup',
-    component: SelectionMockup,
-    title: 'SelectionPage Mockup'
-  },
-  {
     path: '/DirectionsMockup',
     component: DirectionsMockup,
     title: 'DirectionsPage Mockup'
+  },
+  {
+    path: '/ResultsMockup',
+    component: ResultsMockup,
+    title: 'ResultsPage Mockup'
   }
-  // { path: '/music-drawer', component: MusicDrawer, title: 'Music drawer' },
-
-  // { path: '/photo-grid', component: PhotoGrid, title: 'Photo Grid' },
-  // { path: '/notification', component: Notification, title: 'Notification' }
 ];
 
 export default function App() {
@@ -91,29 +92,45 @@ export default function App() {
 
   return (
     <Fragment>
-      <Switch>
-        <Route exact path='/'>
-          <StyledNav>
-            <h1>Wireframe Components</h1>
-            <ul>
-              {routes.map(r => (
-                <li key={r.title}>
-                  <Link to={r.path}>{r.title}</Link>
-                </li>
-              ))}
-            </ul>
-          </StyledNav>
-        </Route>
-        <Route path='/SplashPageMockup'>
-          <SplashPageMockup></SplashPageMockup>
-        </Route>
-        <Route path='/SelectionMockup'>
-          <SelectionMockup></SelectionMockup>
-        </Route>
-        <Route path='/DirectionsMockup'>
-          <DirectionsMockup></DirectionsMockup>
-        </Route>
-      </Switch>
+      <Navbar>
+        <Switch>
+          <Route exact path='/'>
+            <HomePage />
+          </Route>
+          <Route path='/directions'>
+            <DirectionsPage />
+          </Route>
+          <Route path='/results/:initialTime/:startingPoint/:destination'>
+            <ResultsPage />
+          </Route>
+
+          <Route exact path='/wireframes'>
+            <StyledNav>
+              <h1>Wireframe Components</h1>
+              <ul>
+                {routes.map(r => (
+                  <li key={r.title}>
+                    <Link to={r.path}>{r.title}</Link>
+                  </li>
+                ))}
+              </ul>
+            </StyledNav>
+          </Route>
+          <Route path='/SplashPageMockup'>
+            <SplashPageMockup></SplashPageMockup>
+            <DirectionsMockup></DirectionsMockup>
+          </Route>
+          <Route path='/DirectionsMockup'>
+            <DirectionsMockup></DirectionsMockup>
+          </Route>
+          <Route path='/ResultsMockup'>
+            <ResultsMockup></ResultsMockup>
+          </Route>
+          <Route path='/'>
+            <div>404 Error (The requested page could not be found).</div>
+          </Route>
+        </Switch>
+      </Navbar>
     </Fragment>
   );
 }

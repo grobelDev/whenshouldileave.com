@@ -8,9 +8,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import parse from 'autosuggest-highlight/parse';
 import throttle from 'lodash/throttle';
 
-require('dotenv').config();
-
-console.log('API_KEY:', process.env.API_KEY);
+const api_key = process.env.REACT_APP_PLACES_MAPS;
 
 function loadScript(src, position, id) {
   if (!position) {
@@ -42,7 +40,7 @@ export default function GoogleMaps({ label, setInput }) {
   if (typeof window !== 'undefined' && !loaded.current) {
     if (!document.querySelector('#google-maps')) {
       loadScript(
-        'https://maps.googleapis.com/maps/api/js?key=AIzaSyBwRp1e12ec1vOTtGiA4fcCt2sCUS78UYc&libraries=places',
+        `https://maps.googleapis.com/maps/api/js?key=${api_key}&libraries=places`,
         document.querySelector('head'),
         'google-maps'
       );

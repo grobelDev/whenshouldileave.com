@@ -1,27 +1,34 @@
-import React from 'react';
+import React, { useState } from 'react';
 
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 
 import DriveEtaIcon from '@material-ui/icons/DriveEta';
 import DirectionsBusIcon from '@material-ui/icons/DirectionsBus';
 import DirectionsWalkIcon from '@material-ui/icons/DirectionsWalk';
 import DirectionsBikeIcon from '@material-ui/icons/DirectionsBike';
-import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
+// import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
 import SwapVertIcon from '@material-ui/icons/SwapVert';
-import SwapVerticalCircleIcon from '@material-ui/icons/SwapVerticalCircle';
+// import SwapVerticalCircleIcon from '@material-ui/icons/SwapVerticalCircle';
 import SearchIcon from '@material-ui/icons/Search';
 
 import MaterialAutocomplete from './MaterialAutocomplete';
 
-export default function SelectionMockup() {
+export default function DirectionsPage() {
+  const [startingPoint, setStartingPoint] = useState(null);
+  const [destination, setDestination] = useState(null);
+
   return (
     <div>
       <Layout>
         <Header>
-          <SelectionDetails></SelectionDetails>
+          <SelectionDetails
+            startingPoint={startingPoint}
+            destination={destination}
+            setStartingPoint={setStartingPoint}
+            setDestination={setDestination}
+          ></SelectionDetails>
         </Header>
       </Layout>
-      <hr className='border-2 border-gray-200'></hr>
     </div>
   );
 }
@@ -52,7 +59,7 @@ function Header({ children }) {
             <h1 className='text-3xl font-light'>Directions</h1>
             <div className='mt-2 text-gray-600'>May your roads be green.</div>
 
-            <hr className='mt-4 mb-8 border-b-2 border-gray-200'></hr>
+            {/* <hr className='mt-4 mb-8 border-b-2 border-gray-200'></hr> */}
             <div className='flex flex-grow w-full max-w-3xl px-6 mx-auto'></div>
           </div>
           <div className='flex'>
@@ -66,19 +73,39 @@ function Header({ children }) {
   );
 }
 
-function SelectionDetails() {
+function SelectionDetails({
+  startingPoint,
+  destination,
+  setStartingPoint,
+  setDestination
+}) {
   return (
     <div>
-      <SearchItem></SearchItem>
+      <SearchItem
+        startingPoint={startingPoint}
+        destination={destination}
+        setStartingPoint={setStartingPoint}
+        setDestination={setDestination}
+      ></SearchItem>
       <SelectionResultsPreview></SelectionResultsPreview>
     </div>
   );
 }
 
-function SearchItem() {
+function SearchItem({
+  startingPoint,
+  destination,
+  setStartingPoint,
+  setDestination
+}) {
   return (
     <SearchLayout>
-      <SearchDetails></SearchDetails>
+      <SearchDetails
+        startingPoint={startingPoint}
+        destination={destination}
+        setStartingPoint={setStartingPoint}
+        setDestination={setDestination}
+      ></SearchDetails>
     </SearchLayout>
   );
 }
@@ -91,13 +118,23 @@ function SearchLayout({ children }) {
   );
 }
 
-function SearchDetails() {
+function SearchDetails({
+  startingPoint,
+  destination,
+  setStartingPoint,
+  setDestination
+}) {
   return (
     <div>
       <SearchIcons></SearchIcons>
       <hr className='my-6 border rounded'></hr>
       <div className='pb-2'>
-        <SearchBars></SearchBars>
+        <SearchBars
+          startingPoint={startingPoint}
+          destination={destination}
+          setStartingPoint={setStartingPoint}
+          setDestination={setDestination}
+        ></SearchBars>
       </div>
     </div>
   );
@@ -122,7 +159,12 @@ function SearchIcons() {
   );
 }
 
-function SearchBars() {
+function SearchBars({
+  startingPoint,
+  destination,
+  setStartingPoint,
+  setDestination
+}) {
   return (
     <div>
       <div className='flex'>
@@ -131,7 +173,7 @@ function SearchBars() {
             label='Starting Point'
             // onSelect={handleDestinationInput}
             // setInput={setStartingPoint}
-            // onChange={handleStartingInput}
+            onChange={setStartingPoint}
             // handleInput={handleStartingInput}
           ></MaterialAutocomplete>
         </div>
@@ -150,15 +192,26 @@ function SearchBars() {
             label='Destination'
             // onSelect={handleDestinationInput}
             // setInput={setStartingPoint}
-            // onChange={handleStartingInput}
+            onChange={setDestination}
             // handleInput={handleStartingInput}
           ></MaterialAutocomplete>
         </div>
         <div className='flex flex-col justify-center'>
-          <SearchIcon
-            style={{ fontSize: 30 }}
-            className='flex-grow-0 mx-2 mt-4'
-          ></SearchIcon>
+          <button
+            onClick={() =>
+              console.log(
+                'startingPoint:',
+                startingPoint,
+                'destination:',
+                destination
+              )
+            }
+          >
+            <SearchIcon
+              style={{ fontSize: 30 }}
+              className='flex-grow-0 mx-2 mt-4'
+            ></SearchIcon>
+          </button>
         </div>
       </div>
     </div>
