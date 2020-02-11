@@ -99,8 +99,7 @@ export default function GoogleMaps({ label, setInput }) {
       includeInputInList
       freeSolo
       disableOpenOnFocus
-      onChange={(e, v) => setInput(v.description)}
-      // onChange={setInput}
+      onChange={(e, v) => (v ? setInput(v.description) : setInput(null))}
       renderInput={params => (
         <TextField
           {...params}

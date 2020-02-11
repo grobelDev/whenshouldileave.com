@@ -100,7 +100,7 @@ export default function App() {
           <Route path='/directions'>
             <DirectionsPage />
           </Route>
-          <Route path='/results/:initialTime/:startingPoint/:destination'>
+          <Route path='/results/:mode/:startingPoint/:destination'>
             <ResultsPage />
           </Route>
 

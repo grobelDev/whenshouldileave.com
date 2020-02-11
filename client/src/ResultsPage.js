@@ -9,12 +9,12 @@ import NotificationsIcon from '@material-ui/icons/Notifications';
 import { useParams } from 'react-router-dom';
 
 export default function ResultsPage() {
-  let { initialTime, startingPoint, destination } = useParams();
+  let { mode, startingPoint, destination } = useParams();
 
   return (
     <div>
       <div>Results Page</div>
-      <div>{`${initialTime}, ${startingPoint}, ${destination}`}</div>
+      <div>{`${mode}, ${startingPoint}, ${destination}`}</div>
     </div>
   );
 }

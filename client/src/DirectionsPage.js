@@ -1,79 +1,60 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import styled from 'styled-components';
 
-import DriveEtaIcon from '@material-ui/icons/DriveEta';
-import DirectionsBusIcon from '@material-ui/icons/DirectionsBus';
-import DirectionsWalkIcon from '@material-ui/icons/DirectionsWalk';
-import DirectionsBikeIcon from '@material-ui/icons/DirectionsBike';
+// import DriveEtaIcon from '@material-ui/icons/DriveEta';
+// import DirectionsBusIcon from '@material-ui/icons/DirectionsBus';
+// import DirectionsWalkIcon from '@material-ui/icons/DirectionsWalk';
+// import DirectionsBikeIcon from '@material-ui/icons/DirectionsBike';
 // import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
-import SwapVertIcon from '@material-ui/icons/SwapVert';
 // import SwapVerticalCircleIcon from '@material-ui/icons/SwapVerticalCircle';
+import SwapVertIcon from '@material-ui/icons/SwapVert';
 import SearchIcon from '@material-ui/icons/Search';
 
 import MaterialAutocomplete from './MaterialAutocomplete';
 
+import {
+  PageLayout,
+  PageHeader,
+  SearchLayout,
+  SearchIcons
+} from './DirectionsPageStatic';
+
 export default function DirectionsPage() {
   const [startingPoint, setStartingPoint] = useState(null);
   const [destination, setDestination] = useState(null);
+  const [mode, setMode] = useState('driving');
+  const [didSearch, setDidSearch] = useState(null);
+
+  useEffect(() => {
+    if (startingPoint && destination) {
+      setDidSearch(true);
+    }
+  }, [startingPoint, destination]);
 
   return (
     <div>
-      <Layout>
-        <Header>
+      <PageLayout>
+        <PageHeader>
           <SelectionDetails
+            didSearch={didSearch}
+            mode={mode}
+            setMode={setMode}
             startingPoint={startingPoint}
             destination={destination}
             setStartingPoint={setStartingPoint}
             setDestination={setDestination}
           ></SelectionDetails>
-        </Header>
-      </Layout>
-    </div>
-  );
-}
-
-function Layout({ children }) {
-  return (
-    <div className='relative w-full pt-5 pb-40 mx-auto max-w-screen-xl md:pb-24'>
-      <div className='-mx-6'>
-        <div className='max-w-2xl px-6 mx-auto text-left md:max-w-3xl'>
-          <div
-            id='content-wrapper'
-            className='w-full min-h-screen lg:static lg:max-h-full lg:overflow-visible '
-          >
-            {children}
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-}
-
-function Header({ children }) {
-  return (
-    <div id='content'>
-      <div id='app' className='flex'>
-        <div className='w-full pt-12 pb-16 lg:pt-28'>
-          <div className='max-w-3xl px-6 mx-auto mb-6'>
-            <h1 className='text-3xl font-light'>Directions</h1>
-            <div className='mt-2 text-gray-600'>May your roads be green.</div>
-
-            {/* <hr className='mt-4 mb-8 border-b-2 border-gray-200'></hr> */}
-            <div className='flex flex-grow w-full max-w-3xl px-6 mx-auto'></div>
-          </div>
-          <div className='flex'>
-            <div className='w-full max-w-3xl mx-auto -px-6 md:px-6'>
-              {children}
-            </div>
-          </div>
-        </div>
-      </div>
+        </PageHeader>
+      </PageLayout>
     </div>
   );
 }
 
 function SelectionDetails({
+  didSearch,
+  mode,
+  setMode,
   startingPoint,
   destination,
   setStartingPoint,
@@ -87,7 +68,12 @@ function SelectionDetails({
         setStartingPoint={setStartingPoint}
         setDestination={setDestination}
       ></SearchItem>
-      <SelectionResultsPreview></SelectionResultsPreview>
+      <SelectionResultsPreview
+        didSearch={didSearch}
+        mode={mode}
+        startingPoint={startingPoint}
+        destination={destination}
+      ></SelectionResultsPreview>
     </div>
   );
 }
@@ -107,14 +93,6 @@ function SearchItem({
         setDestination={setDestination}
       ></SearchDetails>
     </SearchLayout>
-  );
-}
-
-function SearchLayout({ children }) {
-  return (
-    <StyledListItem className='p-4 pb-5 font-normal bg-gray-100 border shadow-lg md:rounded-lg'>
-      {children}
-    </StyledListItem>
   );
 }
 
@@ -140,25 +118,6 @@ function SearchDetails({
   );
 }
 
-function SearchIcons() {
-  return (
-    <div className='flex items-center justify-between px-4 md:justify-start'>
-      <div className='flex pr-10'>
-        <DriveEtaIcon></DriveEtaIcon>
-      </div>
-      <div className='flex pr-10'>
-        <DirectionsBusIcon></DirectionsBusIcon>
-      </div>
-      <div className='flex pr-10'>
-        <DirectionsWalkIcon></DirectionsWalkIcon>
-      </div>
-      <div>
-        <DirectionsBikeIcon></DirectionsBikeIcon>
-      </div>
-    </div>
-  );
-}
-
 function SearchBars({
   startingPoint,
   destination,
@@ -171,17 +130,18 @@ function SearchBars({
         <div className='flex-grow pl-2 pr-6'>
           <MaterialAutocomplete
             label='Starting Point'
-            // onSelect={handleDestinationInput}
-            // setInput={setStartingPoint}
-            onChange={setStartingPoint}
-            // handleInput={handleStartingInput}
+            setInput={setStartingPoint}
           ></MaterialAutocomplete>
         </div>
         <div className='flex flex-col justify-center'>
-          <SwapVertIcon
-            style={{ fontSize: 30 }}
-            className='flex-grow-0 mx-2 mt-4'
-          ></SwapVertIcon>
+          <button
+            onClick={() => console.log('swap startingPoint and Destination')}
+          >
+            <SwapVertIcon
+              style={{ fontSize: 30 }}
+              className='flex-grow-0 mx-2 mt-4'
+            ></SwapVertIcon>
+          </button>
         </div>
         <div></div>
       </div>
@@ -190,10 +150,7 @@ function SearchBars({
         <div className='flex-grow pl-2 pr-6'>
           <MaterialAutocomplete
             label='Destination'
-            // onSelect={handleDestinationInput}
-            // setInput={setStartingPoint}
-            onChange={setDestination}
-            // handleInput={handleStartingInput}
+            setInput={setDestination}
           ></MaterialAutocomplete>
         </div>
         <div className='flex flex-col justify-center'>
@@ -218,7 +175,16 @@ function SearchBars({
   );
 }
 
-function SelectionResultsPreview() {
+function SelectionResultsPreview({
+  didSearch,
+  mode,
+  startingPoint,
+  destination
+}) {
+  if (!didSearch) {
+    return null;
+  }
+
   return (
     <div className='border rounded shadow-lg md:rounded-lg'>
       <StyledListItem className='rounded '>
