@@ -54,25 +54,6 @@ export function SearchLayout({ children }) {
   );
 }
 
-export function SearchIcons() {
-  return (
-    <div className='flex items-center justify-between px-4 md:justify-start'>
-      <div className='flex pr-10'>
-        <DriveEtaIcon></DriveEtaIcon>
-      </div>
-      <div className='flex pr-10'>
-        <DirectionsBusIcon></DirectionsBusIcon>
-      </div>
-      <div className='flex pr-10'>
-        <DirectionsWalkIcon></DirectionsWalkIcon>
-      </div>
-      <div>
-        <DirectionsBikeIcon></DirectionsBikeIcon>
-      </div>
-    </div>
-  );
-}
-
 const StyledListItem = styled.div`
   background-color: white;
   position: relative;

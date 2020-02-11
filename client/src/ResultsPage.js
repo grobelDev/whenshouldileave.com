@@ -1,4 +1,8 @@
-import React from 'react';
+import React, { Suspense, useEffect } from 'react';
+import ErrorBoundary from './ErrorBoundary';
+import { useParams } from 'react-router-dom';
+import { fetchData } from './api';
+
 import styled, { css } from 'styled-components';
 import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
 import DriveEtaIcon from '@material-ui/icons/DriveEta';
@@ -6,15 +10,159 @@ import ShareIcon from '@material-ui/icons/Share';
 import MapIcon from '@material-ui/icons/Map';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 
-import { useParams } from 'react-router-dom';
-
 export default function ResultsPage() {
   let { mode, startingPoint, destination } = useParams();
 
+  // useEffect(() => {
+
+  // }, [mode, startingPoint, destination]);
+
+  return (
+    <PageLayoutV2>
+      <PageHeader>
+        <div>{`${mode}, ${startingPoint}, ${destination}`}</div>
+        <ResourceWrapper
+          mode={mode}
+          startingPoint={startingPoint}
+          destination={destination}
+        ></ResourceWrapper>
+      </PageHeader>
+    </PageLayoutV2>
+  );
+}
+
+function ResourceWrapper({ mode, startingPoint, destination }) {
+  if (!mode || !startingPoint || !destination) {
+    return null;
+  }
+
+  console.log('resource wrapper:', startingPoint, destination);
+  let initialResource = fetchData(startingPoint, destination);
+
+  return <ResultsWrapper resource={initialResource}></ResultsWrapper>;
+}
+
+function ResultsWrapper({ resource }) {
   return (
     <div>
-      <div>Results Page</div>
-      <div>{`${mode}, ${startingPoint}, ${destination}`}</div>
+      <hr className='my-10 border'></hr>
+      <ErrorBoundary fallback={<div>Error in loading data</div>}>
+        <Suspense fallback={<div>Loading...</div>}>
+          <ResultsDetail resource={resource}></ResultsDetail>
+        </Suspense>
+      </ErrorBoundary>
+    </div>
+  );
+}
+
+function ResultsDetail({ resource }) {
+  let results = resource.directions.read();
+  let env = process.env.NODE_ENV || 'development';
+
+  console.log(results);
+  let startingPoint = results[0].query.origin;
+  let destination = results[0].query.destination;
+
+  // let startingPoint = 'startingPoint';
+  // let destination = 'destination';
+
+  return (
+    <div>
+      <div className='font-bold'>
+        {startingPoint} -> {destination}
+      </div>
+      <div></div>
+      <div>
+        {results.map(result => {
+          let time = result.query.departure_time;
+
+          let currentTime = new Date(0);
+          currentTime.setUTCSeconds(time);
+
+          let currentTimeString = currentTime.toLocaleTimeString();
+
+          let routes = result.json.routes;
+          let route = routes[0];
+          return (
+            <RoutesDetail
+              route={route}
+              time={currentTimeString}
+              key={`${route}/${currentTimeString}`}
+            ></RoutesDetail>
+          );
+        })}
+      </div>
+      <div>{env === 'development' ? JSON.stringify(results) : null}</div>
+    </div>
+  );
+}
+
+function RoutesDetail({ route, time }) {
+  let legs = route.legs;
+  let leg = legs[0];
+
+  let distance = leg.distance;
+  let duration = leg.duration;
+  let durationInTraffic = leg.duration_in_traffic;
+
+  let textResult = {
+    distance: distance.text,
+    duration: duration.text,
+    durationInTraffic: durationInTraffic.text
+  };
+
+  return (
+    <div className='p-2'>
+      <div className='flex border-2'>
+        <div className='flex flex-col px-2 py-1'>
+          <div>Departure Time:</div>
+          <div>{time}</div>
+        </div>
+        <div className='flex flex-col p-1'>
+          <div>distance: {textResult.distance}</div>
+          <div>duration: {textResult.duration}</div>
+          <div>durationInTraffic: {textResult.durationInTraffic}</div>
+        </div>
+        <div>
+          <div>Link:</div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+// Layout
+function PageLayoutV2({ children }) {
+  return (
+    <div className='relative w-full px-6 pt-16 pb-10 mx-auto max-w-screen-xl md:pt-32 md:pb-24'>
+      <div className='-mx-6 xl:flex'>
+        <div className='max-w-2xl px-6 mx-auto text-left md:text-center xl:text-left md:max-w-3xl'>
+          {children}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function PageHeader({ children }) {
+  return (
+    <div id='content'>
+      <div id='app' className='flex'>
+        <div className='w-full pt-12 pb-16 lg:pt-28'>
+          <div className='max-w-3xl px-6 mx-auto mb-6'>
+            <h1 className='text-3xl font-light'>Results</h1>
+            <div className='mt-2 text-gray-600'>May your roads be green.</div>
+
+            {/* <hr className='mt-4 mb-8 border-b-2 border-gray-200'></hr> */}
+            <div className='flex flex-grow w-full max-w-3xl px-6 mx-auto'></div>
+          </div>
+          <div className='flex'>
+            <div className='w-full max-w-3xl mx-auto -px-6 md:px-6'>
+              {children}
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }

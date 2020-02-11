@@ -103,7 +103,6 @@ export default function App() {
           <Route path='/results/:mode/:startingPoint/:destination'>
             <ResultsPage />
           </Route>
-
           <Route exact path='/wireframes'>
             <StyledNav>
               <h1>Wireframe Components</h1>

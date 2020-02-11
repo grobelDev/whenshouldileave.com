@@ -28,9 +28,9 @@ if (env === 'development') {
 
 app.get('/', async (req, res) => {
   try {
-    // let startingPoint = decodeURIComponent(req.query.startingPoint);
-    // let destination = decodeURIComponent(req.query.destination);
-
+    let startingPoint = decodeURIComponent(req.query.startingPoint);
+    let destination = decodeURIComponent(req.query.destination);
+    console.log(startingPoint, destination);
     // let inputs = {
     //   origin: startingPoint,
     //   destination: destination,

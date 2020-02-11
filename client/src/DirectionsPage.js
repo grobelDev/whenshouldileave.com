@@ -1,11 +1,16 @@
 import React, { useState, useEffect } from 'react';
 
 import styled from 'styled-components';
+import {
+  // eslint-disable-next-line
+  BrowserRouter as Router,
+  useHistory
+} from 'react-router-dom';
 
-// import DriveEtaIcon from '@material-ui/icons/DriveEta';
-// import DirectionsBusIcon from '@material-ui/icons/DirectionsBus';
-// import DirectionsWalkIcon from '@material-ui/icons/DirectionsWalk';
-// import DirectionsBikeIcon from '@material-ui/icons/DirectionsBike';
+import DriveEtaIcon from '@material-ui/icons/DriveEta';
+import DirectionsBusIcon from '@material-ui/icons/DirectionsBus';
+import DirectionsWalkIcon from '@material-ui/icons/DirectionsWalk';
+import DirectionsBikeIcon from '@material-ui/icons/DirectionsBike';
 // import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
 // import SwapVerticalCircleIcon from '@material-ui/icons/SwapVerticalCircle';
 import SwapVertIcon from '@material-ui/icons/SwapVert';
@@ -16,15 +21,16 @@ import MaterialAutocomplete from './MaterialAutocomplete';
 import {
   PageLayout,
   PageHeader,
-  SearchLayout,
-  SearchIcons
+  SearchLayout
+  // SearchIcons
 } from './DirectionsPageStatic';
 
 export default function DirectionsPage() {
-  const [startingPoint, setStartingPoint] = useState(null);
-  const [destination, setDestination] = useState(null);
-  const [mode, setMode] = useState('driving');
+  const [startingPoint, setStartingPoint] = useState('');
+  const [destination, setDestination] = useState('');
   const [didSearch, setDidSearch] = useState(null);
+  const [mode, setMode] = useState('driving');
+  let history = useHistory();
 
   useEffect(() => {
     if (startingPoint && destination) {
@@ -32,11 +38,53 @@ export default function DirectionsPage() {
     }
   }, [startingPoint, destination]);
 
+  useEffect(() => {
+    console.log(mode);
+  }, [mode]);
+
+  function handleModeClick(event) {
+    event.preventDefault();
+    console.log(event.target.value);
+  }
+
+  function handleVertIconClick() {
+    let initialStartingPoint = startingPoint;
+    let initialDestination = destination;
+
+    setStartingPoint(initialDestination);
+    setDestination(initialStartingPoint);
+
+    console.log(startingPoint, destination);
+  }
+
+  function handleTimeEstimatesClick() {
+    console.log('handleTimeEstimatesClick()');
+    console.log(
+      'mode:',
+      mode,
+      'startingPoint:',
+      startingPoint,
+      'destination:',
+      destination
+    );
+
+    if (!mode || !startingPoint || !destination) {
+      return null;
+    }
+
+    history.push(`/results/${mode}/${startingPoint}/${destination}`);
+  }
+
   return (
     <div>
       <PageLayout>
         <PageHeader>
           <SelectionDetails
+            handleTimeEstimatesClick={handleTimeEstimatesClick}
+            setMode={setMode}
+            handleModeClick={handleModeClick}
+            mode={mode}
+            handleVertIconClick={handleVertIconClick}
             didSearch={didSearch}
             mode={mode}
             setMode={setMode}
@@ -52,9 +100,12 @@ export default function DirectionsPage() {
 }
 
 function SelectionDetails({
+  handleTimeEstimatesClick,
+  setMode,
+  handleModeClick,
+  handleVertIconClick,
   didSearch,
   mode,
-  setMode,
   startingPoint,
   destination,
   setStartingPoint,
@@ -63,12 +114,17 @@ function SelectionDetails({
   return (
     <div>
       <SearchItem
+        setMode={setMode}
+        handleModeClick={handleModeClick}
+        mode={mode}
+        handleVertIconClick={handleVertIconClick}
         startingPoint={startingPoint}
         destination={destination}
         setStartingPoint={setStartingPoint}
         setDestination={setDestination}
       ></SearchItem>
       <SelectionResultsPreview
+        handleTimeEstimatesClick={handleTimeEstimatesClick}
         didSearch={didSearch}
         mode={mode}
         startingPoint={startingPoint}
@@ -79,6 +135,10 @@ function SelectionDetails({
 }
 
 function SearchItem({
+  setMode,
+  handleModeClick,
+  mode,
+  handleVertIconClick,
   startingPoint,
   destination,
   setStartingPoint,
@@ -87,6 +147,10 @@ function SearchItem({
   return (
     <SearchLayout>
       <SearchDetails
+        setMode={setMode}
+        handleModeClick={handleModeClick}
+        mode={mode}
+        handleVertIconClick={handleVertIconClick}
         startingPoint={startingPoint}
         destination={destination}
         setStartingPoint={setStartingPoint}
@@ -97,6 +161,10 @@ function SearchItem({
 }
 
 function SearchDetails({
+  setMode,
+  handleModeClick,
+  mode,
+  handleVertIconClick,
   startingPoint,
   destination,
   setStartingPoint,
@@ -104,10 +172,16 @@ function SearchDetails({
 }) {
   return (
     <div>
-      <SearchIcons></SearchIcons>
+      <SearchIcons
+        mode={mode}
+        setMode={setMode}
+        handleModeClick={handleModeClick}
+      ></SearchIcons>
       <hr className='my-6 border rounded'></hr>
       <div className='pb-2'>
         <SearchBars
+          mode={mode}
+          handleVertIconClick={handleVertIconClick}
           startingPoint={startingPoint}
           destination={destination}
           setStartingPoint={setStartingPoint}
@@ -118,7 +192,64 @@ function SearchDetails({
   );
 }
 
+function SearchIcons({ mode, setMode, handleModeClick }) {
+  return (
+    <div className='flex items-center justify-between px-4 md:justify-start'>
+      <div className='flex pr-10'>
+        {mode === 'driving' ? (
+          <button value='driving' onClick={() => setMode('driving')}>
+            <DriveEtaIcon></DriveEtaIcon>
+            <div>Selected</div>
+          </button>
+        ) : (
+          <button value='driving' onClick={() => setMode('driving')}>
+            <DriveEtaIcon></DriveEtaIcon>
+          </button>
+        )}
+      </div>
+      <div className='flex pr-10'>
+        {mode === 'transit' ? (
+          <button value='transit' onClick={() => setMode('transit')}>
+            <DirectionsBusIcon></DirectionsBusIcon>
+            <div>Selected</div>
+          </button>
+        ) : (
+          <button value='transit' onClick={() => setMode('transit')}>
+            <DirectionsBusIcon></DirectionsBusIcon>
+          </button>
+        )}
+      </div>
+      <div className='flex pr-10'>
+        {mode === 'walking' ? (
+          <button value='walking' onClick={() => setMode('walking')}>
+            <DirectionsWalkIcon></DirectionsWalkIcon>
+            <div>Selected</div>
+          </button>
+        ) : (
+          <button value='walking' onClick={() => setMode('walking')}>
+            <DirectionsWalkIcon></DirectionsWalkIcon>
+          </button>
+        )}
+      </div>
+      <div>
+        {mode === 'bicycling' ? (
+          <button value='bicycling' onClick={() => setMode('bicycling')}>
+            <DirectionsBikeIcon></DirectionsBikeIcon>
+            <div>Selected</div>
+          </button>
+        ) : (
+          <button value='bicycling' onClick={() => setMode('bicycling')}>
+            <DirectionsBikeIcon></DirectionsBikeIcon>
+          </button>
+        )}
+      </div>
+    </div>
+  );
+}
+
 function SearchBars({
+  mode,
+  handleVertIconClick,
   startingPoint,
   destination,
   setStartingPoint,
@@ -134,14 +265,12 @@ function SearchBars({
           ></MaterialAutocomplete>
         </div>
         <div className='flex flex-col justify-center'>
-          <button
-            onClick={() => console.log('swap startingPoint and Destination')}
-          >
-            <SwapVertIcon
-              style={{ fontSize: 30 }}
-              className='flex-grow-0 mx-2 mt-4'
-            ></SwapVertIcon>
-          </button>
+          {/* <button onClick={() => handleVertIconClick()}> */}
+          <SwapVertIcon
+            style={{ fontSize: 30, opacity: 0 }}
+            className='flex-grow-0 mx-2 mt-4'
+          ></SwapVertIcon>
+          {/* </button> */}
         </div>
         <div></div>
       </div>
@@ -157,6 +286,8 @@ function SearchBars({
           <button
             onClick={() =>
               console.log(
+                'mode:',
+                mode,
                 'startingPoint:',
                 startingPoint,
                 'destination:',
@@ -176,6 +307,7 @@ function SearchBars({
 }
 
 function SelectionResultsPreview({
+  handleTimeEstimatesClick,
   didSearch,
   mode,
   startingPoint,
@@ -187,13 +319,16 @@ function SelectionResultsPreview({
 
   return (
     <div className='border rounded shadow-lg md:rounded-lg'>
-      <StyledListItem className='rounded '>
+      <StyledListItem className='rounded'>
         <img
           className='rounded'
           src='https://cdn.discordapp.com/attachments/675090859493949484/675152739214426132/screenshot.png'
         ></img>
         <div className='flex justify-center my-4'>
-          <button className='px-4 py-2 font-bold text-white bg-blue-500 border-b-4 border-blue-700 rounded hover:bg-blue-400 hover:border-blue-500'>
+          <button
+            onClick={() => handleTimeEstimatesClick()}
+            className='px-4 py-2 font-bold text-white bg-blue-500 border-b-4 border-blue-700 rounded hover:bg-blue-400 hover:border-blue-500'
+          >
             Get Time Estimates
           </button>
         </div>
