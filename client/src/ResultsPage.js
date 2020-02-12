@@ -1,4 +1,10 @@
-import React, { Suspense, useEffect } from 'react';
+import React, { Suspense, useEffect, Fragment, useState } from 'react';
+import {
+  // eslint-disable-next-line
+  BrowserRouter as Router,
+  Link
+} from 'react-router-dom';
+
 import ErrorBoundary from './ErrorBoundary';
 import { useParams } from 'react-router-dom';
 import { fetchData } from './api';
@@ -20,7 +26,10 @@ export default function ResultsPage() {
   return (
     <PageLayoutV2>
       <PageHeader>
-        <div>{`${mode}, ${startingPoint}, ${destination}`}</div>
+        <div className='text-gray-600'>
+          from <span className='text-gray-900'>{startingPoint}</span> <br />
+          to <span className='text-gray-900'>{destination}</span>{' '}
+        </div>
         <ResourceWrapper
           mode={mode}
           startingPoint={startingPoint}
@@ -36,7 +45,7 @@ function ResourceWrapper({ mode, startingPoint, destination }) {
     return null;
   }
 
-  console.log('resource wrapper:', startingPoint, destination);
+  // console.log('resource wrapper:', startingPoint, destination);
   let initialResource = fetchData(startingPoint, destination);
 
   return <ResultsWrapper resource={initialResource}></ResultsWrapper>;
@@ -48,7 +57,7 @@ function ResultsWrapper({ resource }) {
       <hr className='my-10 border'></hr>
       <ErrorBoundary fallback={<div>Error in loading data</div>}>
         <Suspense fallback={<div>Loading...</div>}>
-          <ResultsDetail resource={resource}></ResultsDetail>
+          <ResultsDetailV2 resource={resource}></ResultsDetailV2>
         </Suspense>
       </ErrorBoundary>
     </div>
@@ -59,7 +68,7 @@ function ResultsDetail({ resource }) {
   let results = resource.directions.read();
   let env = process.env.NODE_ENV || 'development';
 
-  console.log(results);
+  // console.log(results);
   let startingPoint = results[0].query.origin;
   let destination = results[0].query.destination;
 
@@ -94,6 +103,150 @@ function ResultsDetail({ resource }) {
       </div>
       <div>{env === 'development' ? JSON.stringify(results) : null}</div>
     </div>
+  );
+}
+
+function ResultsDetailV2({ resource }) {
+  return <ResultsCells resource={resource}></ResultsCells>;
+}
+
+function ResultsCells({ resource }) {
+  let results = resource.directions.read();
+  let env = process.env.NODE_ENV || 'development';
+
+  // console.log(results);
+  // let startingPoint = results[0].query.origin;
+  // let destination = results[0].query.destination;
+
+  return (
+    <Fragment>
+      {results.map(result => {
+        let startingPoint = result.query.origin;
+        let destination = result.query.destination;
+
+        let travelMode = result.query.mode;
+
+        let departureTimeEpoch = result.query.departure_time;
+        let departureTime = new Date(0); // The 0 there is the key, which sets the date to the epoch
+        departureTime.setUTCSeconds(departureTimeEpoch);
+        let departureTimeString = formatAMPM(departureTime);
+        // console.log(departureTimeReturn);
+        // console.log(departureTimeString);
+
+        let durationInTrafficObject =
+          result.json.routes[0].legs[0].duration_in_traffic;
+        let durationInTrafficEpoch = durationInTrafficObject.value;
+        let textInTraffic = durationInTrafficObject.text.split(' ')[0];
+        let durationInTrafficString = `${textInTraffic} min`;
+
+        console.log(result);
+        // console.log(durationInTrafficObject, minutesInTraffic, textInTraffic);
+        // console.log(durationInTrafficString);
+        let arrivalTime = new Date(0);
+        arrivalTime.setUTCSeconds(departureTimeEpoch + durationInTrafficEpoch);
+        let arrivalTimeString = formatAMPM(arrivalTime);
+
+        return (
+          <ResultsCell
+            key={departureTimeEpoch}
+            startingPoint={startingPoint}
+            destination={destination}
+            departureTime={departureTimeString}
+            durationInTraffic={durationInTrafficString}
+            arrivalTime={arrivalTimeString}
+            travelMode={travelMode}
+          ></ResultsCell>
+        );
+      })}
+    </Fragment>
+  );
+
+  function formatAMPM(date) {
+    let hours = date.getHours();
+    let minutes = date.getMinutes();
+    let ampm = hours >= 12 ? 'PM' : 'AM';
+    hours = hours % 12;
+    hours = hours ? hours : 12; // the hour '0' should be '12'
+    minutes = minutes < 10 ? '0' + minutes : minutes;
+    let strTime = hours + ':' + minutes + ' ' + ampm;
+    return strTime;
+  }
+}
+
+function ResultsCell({
+  startingPoint,
+  destination,
+  departureTime,
+  durationInTraffic,
+  arrivalTime,
+  travelMode
+}) {
+  const [selected, setSelected] = useState(false);
+
+  return (
+    <Fragment>
+      <StyledListItem className='p-4 font-normal bg-gray-100 border shadow-lg md:rounded-lg '>
+        <div onClick={() => setSelected(!selected)}>
+          <div className='flex justify-between'>
+            <div className='flex items-center'>
+              <div className='pr-4 text-gray-600 hover:text-black'>
+                {selected ? (
+                  <StyledRotatedArrow>
+                    <ArrowForwardIosIcon
+                      style={{ fontSize: 15 }}
+                    ></ArrowForwardIosIcon>
+                  </StyledRotatedArrow>
+                ) : (
+                  <ArrowForwardIosIcon
+                    style={{ fontSize: 15 }}
+                  ></ArrowForwardIosIcon>
+                )}
+              </div>
+              <div className='text-2xl font-light'>{departureTime}</div>
+            </div>
+            <span className='text-2xl text-green-600'>{durationInTraffic}</span>
+          </div>
+          <div className='flex items-center justify-end pl-8 text-gray-600'>
+            <div>Arrive around {arrivalTime}</div>
+          </div>
+        </div>
+        {selected ? (
+          <ResultsCellSelected
+            startingPoint={startingPoint}
+            destination={destination}
+            travelMode={travelMode}
+          ></ResultsCellSelected>
+        ) : null}
+      </StyledListItem>
+    </Fragment>
+  );
+}
+
+function ResultsCellSelected({ startingPoint, destination, travelMode }) {
+  let googleMapUrl = `https://www.google.com/maps/dir/?api=1&origin=${startingPoint}&destination=${destination}&travelmode=${travelMode}`;
+
+  return (
+    <Fragment>
+      <hr className='my-4'></hr>
+      <div className='pl-8'>
+        <div className='flex items-center'>
+          <MapIcon className='mr-3'></MapIcon>
+          <a href={googleMapUrl} target='_blank'>
+            <span className='text-blue-600'>Open in Google Maps</span>
+          </a>
+        </div>
+        <div className='flex items-center pt-2'>
+          <NotificationsIcon className='mr-3'></NotificationsIcon>
+          <span className='text-blue-600'>
+            Set reminder to leave 10 minutes before.
+          </span>
+        </div>
+        <div className='flex items-center pt-2'>
+          <ShareIcon className='mr-3'></ShareIcon>{' '}
+          <span className='text-blue-600'>Share</span>
+        </div>
+      </div>
+    </Fragment>
   );
 }
 
@@ -134,9 +287,9 @@ function RoutesDetail({ route, time }) {
 // Layout
 function PageLayoutV2({ children }) {
   return (
-    <div className='relative w-full px-6 pt-16 pb-10 mx-auto max-w-screen-xl md:pt-32 md:pb-24'>
+    <div className='relative w-full max-w-screen-xl px-6 pt-16 pb-10 mx-auto md:pt-32 md:pb-24'>
       <div className='-mx-6 xl:flex'>
-        <div className='max-w-2xl px-6 mx-auto text-left md:text-center xl:text-left md:max-w-3xl'>
+        <div className='max-w-2xl px-6 mx-auto text-left md:max-w-3xl'>
           {children}
         </div>
       </div>
@@ -149,9 +302,9 @@ function PageHeader({ children }) {
     <div id='content'>
       <div id='app' className='flex'>
         <div className='w-full pt-12 pb-16 lg:pt-28'>
-          <div className='max-w-3xl px-6 mx-auto mb-6'>
-            <h1 className='text-3xl font-light'>Results</h1>
-            <div className='mt-2 text-gray-600'>May your roads be green.</div>
+          <div className='max-w-3xl px-6 mx-auto mb-4'>
+            <h1 className='text-3xl font-light'>When Should I Leave?</h1>
+            {/* <div className='mt-2 text-gray-600'>May your roads be green.</div> */}
 
             {/* <hr className='mt-4 mb-8 border-b-2 border-gray-200'></hr> */}
             <div className='flex flex-grow w-full max-w-3xl px-6 mx-auto'></div>
@@ -180,7 +333,7 @@ function DirectionsMockup({ resource }) {
 
 function Layout({ children }) {
   return (
-    <div className='relative w-full pt-5 pb-40 mx-auto md:px-6 max-w-screen-xl md:pb-24'>
+    <div className='relative w-full max-w-screen-xl pt-5 pb-40 mx-auto md:px-6 md:pb-24'>
       <div className='-mx-6'>
         <div className='max-w-2xl px-6 mx-auto text-left md:max-w-3xl'>
           <div

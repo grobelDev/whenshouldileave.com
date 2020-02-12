@@ -73,6 +73,7 @@ export default function DirectionsPage() {
     }
 
     history.push(`/results/${mode}/${startingPoint}/${destination}`);
+    window.scrollTo(0, 0);
   }
 
   return (
