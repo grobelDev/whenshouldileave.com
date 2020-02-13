@@ -120,6 +120,7 @@ function ResultsCells({ resource }) {
 
   return (
     <Fragment>
+      {/* <div>This trip takes 14 mins on average.</div> */}
       {results.map(result => {
         let startingPoint = result.query.origin;
         let destination = result.query.destination;
@@ -136,12 +137,31 @@ function ResultsCells({ resource }) {
         let durationInTrafficObject =
           result.json.routes[0].legs[0].duration_in_traffic;
         let durationInTrafficEpoch = durationInTrafficObject.value;
-        let textInTraffic = durationInTrafficObject.text.split(' ')[0];
-        let durationInTrafficString = `${textInTraffic} min`;
+        // let textInTraffic = durationInTrafficObject.text.split(' ')[0];
+        // let durationInTrafficString = `${textInTraffic} min`;
 
+        let durationInTraffic = durationInTrafficObject.text;
+
+        let typicalDurationEpoch = result.json.routes[0].legs[0].duration.value;
+        let percentDifference = getPercentDifference(
+          typicalDurationEpoch,
+          durationInTrafficEpoch
+        );
+        // let typicalDurationText = result.json.routes[0].legs[0].duration.text;
+        // let typicalDurationStringValue = typicalDurationText.split(' ')[0];
+        // let typicalDurationString = `${typicalDurationStringValue} min`;
+        // let typicalDuration = typicalDurationText
+        let typicalDuration = result.json.routes[0].legs[0].duration.text;
+
+        let routeColor = getColorFromPercentDifference(percentDifference);
+
+        console.log(routeColor);
+        console.log(percentDifference);
+        // console.log(typicalDuration);
         console.log(result);
         // console.log(durationInTrafficObject, minutesInTraffic, textInTraffic);
         // console.log(durationInTrafficString);
+
         let arrivalTime = new Date(0);
         arrivalTime.setUTCSeconds(departureTimeEpoch + durationInTrafficEpoch);
         let arrivalTimeString = formatAMPM(arrivalTime);
@@ -152,9 +172,11 @@ function ResultsCells({ resource }) {
             startingPoint={startingPoint}
             destination={destination}
             departureTime={departureTimeString}
-            durationInTraffic={durationInTrafficString}
+            durationInTraffic={durationInTraffic}
             arrivalTime={arrivalTimeString}
             travelMode={travelMode}
+            routeColor={routeColor}
+            typicalDuration={typicalDuration}
           ></ResultsCell>
         );
       })}
@@ -177,11 +199,15 @@ function ResultsCell({
   startingPoint,
   destination,
   departureTime,
+  typicalDuration,
   durationInTraffic,
   arrivalTime,
-  travelMode
+  travelMode,
+  routeColor
 }) {
   const [selected, setSelected] = useState(false);
+
+  // console.log(departureTime, durationInTraffic);
 
   return (
     <Fragment>
@@ -204,8 +230,13 @@ function ResultsCell({
               </div>
               <div className='text-2xl font-light'>{departureTime}</div>
             </div>
-            <span className='text-2xl text-green-600'>{durationInTraffic}</span>
+            <span className={`text-2xl text-${routeColor}-600`}>
+              {durationInTraffic}
+            </span>
           </div>
+          {/* <div className='flex items-center justify-end pl-8 text-gray-600'>
+            <div>Total Time is {typicalDuration}</div>
+          </div> */}
           <div className='flex items-center justify-end pl-8 text-gray-600'>
             <div>Arrive around {arrivalTime}</div>
           </div>
@@ -983,6 +1014,22 @@ function DirectionsCells() {
             </ul> */}
     </div>
   );
+}
+
+function getPercentDifference(x, y) {
+  return (x / y - 1) * 100;
+}
+
+function getColorFromPercentDifference(percent) {
+  if (percent < 0) {
+    return 'red';
+  }
+  if (percent < 10) {
+    return 'yellow';
+  }
+  if (percent >= 10) {
+    return 'green';
+  }
 }
 
 const StyledEmail = styled.div`
