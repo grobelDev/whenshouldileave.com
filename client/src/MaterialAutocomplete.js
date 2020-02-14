@@ -10,6 +10,10 @@ import throttle from 'lodash/throttle';
 
 const api_key = process.env.REACT_APP_PLACES_MAPS;
 
+api_key
+  ? console.log('there is an api_key')
+  : console.log('there is no api_key');
+
 function loadScript(src, position, id) {
   if (!position) {
     return;

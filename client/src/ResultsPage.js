@@ -15,6 +15,7 @@ import DriveEtaIcon from '@material-ui/icons/DriveEta';
 import ShareIcon from '@material-ui/icons/Share';
 import MapIcon from '@material-ui/icons/Map';
 import NotificationsIcon from '@material-ui/icons/Notifications';
+import EmailIcon from '@material-ui/icons/Email';
 
 export default function ResultsPage() {
   let { mode, startingPoint, destination } = useParams();
@@ -267,11 +268,15 @@ function ResultsCellSelected({ startingPoint, destination, travelMode }) {
           </a>
         </div>
         <div className='flex items-center pt-2'>
+          <EmailIcon className='mr-3'></EmailIcon>
+          <span className='text-blue-600'>Email results</span>
+        </div>
+        {/* <div className='flex items-center pt-2'>
           <NotificationsIcon className='mr-3'></NotificationsIcon>
           <span className='text-blue-600'>
             Set reminder to leave 10 minutes before.
           </span>
-        </div>
+        </div> */}
         <div className='flex items-center pt-2'>
           <ShareIcon className='mr-3'></ShareIcon>{' '}
           <span className='text-blue-600'>Share</span>
