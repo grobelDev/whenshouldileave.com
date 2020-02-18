@@ -321,11 +321,11 @@ function SelectionResultsPreview({
   return (
     <div className='border rounded shadow-lg md:rounded-lg'>
       <StyledListItem className='rounded'>
-        <img
+        {/* <img
           className='rounded'
           src='https://cdn.discordapp.com/attachments/675090859493949484/675152739214426132/screenshot.png'
-        ></img>
-        <div className='flex justify-center my-4'>
+        ></img> */}
+        <div className='flex justify-center py-4'>
           <button
             onClick={() => handleTimeEstimatesClick()}
             className='px-4 py-2 font-bold text-white bg-blue-500 border-b-4 border-blue-700 rounded hover:bg-blue-400 hover:border-blue-500'
