@@ -8,11 +8,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import parse from 'autosuggest-highlight/parse';
 import throttle from 'lodash/throttle';
 
-const api_key = process.env.REACT_APP_PLACES_MAPS;
-
-api_key
-  ? console.log('there is an api_key')
-  : console.log('there is no api_key');
+const api_key = 'AIzaSyDKSImjcLcgEwaShrMhp0rp0GscQ1rUas8';
 
 function loadScript(src, position, id) {
   if (!position) {
