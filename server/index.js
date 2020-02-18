@@ -122,8 +122,8 @@ app.get('/', async (req, res) => {
     });
 
     // console.log(sanitizedResponse);
-
-    res.status(200).send(sanitizedResponse);
+    res.status(200).send(databaseData);
+    // res.status(200).send(sanitizedResponse);
   } catch (err) {
     console.log(err);
     res.status(400).send(err);
