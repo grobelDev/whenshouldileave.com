@@ -4,6 +4,7 @@ const bodyParser = require('body-parser');
 const Knex = require('knex');
 
 const results = require('./results.js');
+// const DirectionsService = require('./directions-service');
 
 // const directions = require('./directions.js');
 
@@ -96,13 +97,40 @@ const connect = () => {
 const knex = connect();
 // [END cloud_sql_postgres_knex_create]
 
+// [START cloud_sql_postgres_knex_connection]
+/**
+ * Insert a directions record into the database.
+ *
+ * @param {object} knex The Knex connection object.
+ * @param {object} newDirections The directions record to insert.
+ * @returns {Promise}
+ */
+const insertDirections = async (knex, newDirections) => {
+  try {
+    return await knex('directions').insert(newDirections);
+  } catch (err) {
+    throw Error(err);
+  }
+};
+// [END cloud_sql_postgres_knex_connection]
+
+/**
+ * Retrieve all directions data
+ *
+ * @param {object} knex The Knex connection object.
+ * @returns {Promise}
+ */
+const getDirectionsData = async knex => {
+  return await knex.select('*').from('directions');
+};
+
 /**
  * Retrieve all test data
  *
  * @param {object} knex The Knex connection object.
  * @returns {Promise}
  */
-const getData = async knex => {
+const getTestData = async knex => {
   return await knex.select('*').from('guestbook');
 };
 
@@ -110,15 +138,35 @@ app.get('/', async (req, res) => {
   try {
     let startingPoint = decodeURIComponent(req.query.startingPoint);
     let destination = decodeURIComponent(req.query.destination);
-    console.log(startingPoint, destination);
+    // console.log(startingPoint, destination);
     // let inputs = {
     //   origin: startingPoint,
     //   destination: destination,
     //   mode: 'driving',
     //   departure_time: 'now'
     // };
-    const databaseData = await getData(knex);
-    console.log(databaseData);
+    let newDirections = {
+      startingpoint: startingPoint,
+      destination: destination
+    };
+
+    try {
+      await insertDirections(knex, newDirections);
+    } catch (err) {
+      // logger.error(`Error while attempting to submit directions:${err}`);
+      console.log(`Error while attempting to submit directions:${err}`);
+      res
+        .status(500)
+        .send('Unable to insert directions; see logs for more details.')
+        .end();
+      return;
+    }
+
+    // const databaseData = await getTestData(knex);
+    const directionsData = await getDirectionsData(knex);
+
+    // console.log('databaseData:', databaseData);
+    console.log('directionsData:', directionsData);
 
     // let result = await directions.getDirections(inputs);
     let response = await results.getResults(req);
@@ -130,8 +178,8 @@ app.get('/', async (req, res) => {
     });
 
     // console.log(sanitizedResponse);
-    res.status(200).send(databaseData);
-    // res.status(200).send(sanitizedResponse);
+    // res.status(200).send(databaseData);
+    res.status(200).send(sanitizedResponse);
   } catch (err) {
     console.log(err);
     res.status(400).send(err);
