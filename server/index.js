@@ -29,6 +29,9 @@ if (env === 'development') {
   app.use(cors(corsOptions));
 }
 
+if (env === 'development') {
+}
+
 // [START cloud_sql_postgres_knex_create]
 // Initialize Knex, a Node.js SQL query builder library with built-in connection pooling.
 const connect = () => {
@@ -41,7 +44,12 @@ const connect = () => {
     database: process.env.DB_NAME // e.g. 'my-database'
   };
 
-  config.host = `/cloudsql/${process.env.CLOUD_SQL_CONNECTION_NAME}`;
+  if (env === 'development') {
+    config.host = '127.0.0.1';
+    config.port = '3306';
+  } else {
+    config.host = `/cloudsql/${process.env.CLOUD_SQL_CONNECTION_NAME}`;
+  }
 
   // Establish a connection to the database
   const knex = Knex({
@@ -89,7 +97,7 @@ const knex = connect();
 // [END cloud_sql_postgres_knex_create]
 
 /**
- * Retrieve the latest 5 vote records from the database.
+ * Retrieve all test data
  *
  * @param {object} knex The Knex connection object.
  * @returns {Promise}
