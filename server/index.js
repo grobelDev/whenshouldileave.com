@@ -138,6 +138,21 @@ app.get('/', async (req, res) => {
   try {
     let startingPoint = decodeURIComponent(req.query.startingPoint);
     let destination = decodeURIComponent(req.query.destination);
+
+    // console.log(
+    //   'startingPoint:',
+    //   typeof startingPoint,
+    //   'destination:',
+    //   destination
+    // );
+
+    if (startingPoint === 'undefined' || destination === 'undefined') {
+      console.log('invalid inputs');
+      return res
+        .status(400)
+        .send('Invalid Directions')
+        .end();
+    }
     // console.log(startingPoint, destination);
     // let inputs = {
     //   origin: startingPoint,
@@ -150,6 +165,7 @@ app.get('/', async (req, res) => {
       destination: destination
     };
 
+    // if (startingPoint !== 'undefined' && destination !== 'undefined') {
     try {
       await insertDirections(knex, newDirections);
     } catch (err) {
@@ -161,6 +177,9 @@ app.get('/', async (req, res) => {
         .end();
       return;
     }
+    // } else {
+    //   console.log('invalid inputs');
+    // }
 
     // const databaseData = await getTestData(knex);
     const directionsData = await getDirectionsData(knex);
