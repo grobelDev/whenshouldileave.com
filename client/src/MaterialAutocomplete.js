@@ -8,7 +8,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import parse from 'autosuggest-highlight/parse';
 import throttle from 'lodash/throttle';
 
-const api_key = 'AIzaSyDKSImjcLcgEwaShrMhp0rp0GscQ1rUas8';
+const api_key = 'AIzaSyB8t2bYSpRB6DlBXia0fosp6j6MikkCubQ';
 
 function loadScript(src, position, id) {
   if (!position) {
