@@ -146,6 +146,11 @@ app.get('/', async (req, res) => {
     //   destination
     // );
 
+    const directionsData = await getDirectionsData(knex);
+
+    // console.log('databaseData:', databaseData);
+    console.log('directionsData:', directionsData);
+
     if (startingPoint === 'undefined' || destination === 'undefined') {
       console.log('invalid inputs');
       return res
@@ -182,10 +187,6 @@ app.get('/', async (req, res) => {
     // }
 
     // const databaseData = await getTestData(knex);
-    const directionsData = await getDirectionsData(knex);
-
-    // console.log('databaseData:', databaseData);
-    console.log('directionsData:', directionsData);
 
     // let result = await directions.getDirections(inputs);
     let response = await results.getResults(req);
