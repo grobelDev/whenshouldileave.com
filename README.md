@@ -1,16 +1,35 @@
-Hello, this is whenshouldileave.com.
+# https://whenshouldileave.com
 
-It is a way to find the optimal time to leave for a destination while keeping traffic in mind.
+This is the client for whenshouldileave.com.
 
-The stack used includes:
+## About
 
-- React
-- Node.js
-- Express.js
-- Postgres
-- Docker
-- Google Cloud
-- Google Cloud Build
-- Google Cloud Run
+'When Should I Leave' will give you an hour by hour breakdown of traffic.
 
-I hope you enjoy the application.
+Use the search, which features Google's own autocomplete to look up any route.  
+The website will tell you the exact minutes that your route will take, so that traffic will never take you unawares.
+
+You can even share the link to your route directly!
+
+Driving is better with the road to yourself.
+
+![whenshouldileave.com](https://cdn.discordapp.com/attachments/636565266356240394/690388170369400863/screenshot.png)
+![whenshouldileave.com](https://cdn.discordapp.com/attachments/636565266356240394/690388099515154512/screenshot.png)
+![whenshouldileave.com](https://cdn.discordapp.com/attachments/636565266356240394/690384886271311892/screenshot.png)
+
+## Tech Stack
+
+-  React
+-  Node.js
+-  Express.js
+-  Postgres
+-  Docker
+-  Google Cloud
+-  Google Cloud Build
+-  Google Cloud Run
+
+## API
+
+API inputs:
+
+-  `/` - the main request handler that returns directions from two different valid locations with a time value.
