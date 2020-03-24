@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
-
+import './index.css';
 import './tailwind.css';
 
 import App from './App';

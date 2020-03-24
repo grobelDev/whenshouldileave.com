@@ -11,8 +11,6 @@ import DriveEtaIcon from '@material-ui/icons/DriveEta';
 import DirectionsBusIcon from '@material-ui/icons/DirectionsBus';
 import DirectionsWalkIcon from '@material-ui/icons/DirectionsWalk';
 import DirectionsBikeIcon from '@material-ui/icons/DirectionsBike';
-// import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
-// import SwapVerticalCircleIcon from '@material-ui/icons/SwapVerticalCircle';
 import SwapVertIcon from '@material-ui/icons/SwapVert';
 import SearchIcon from '@material-ui/icons/Search';
 

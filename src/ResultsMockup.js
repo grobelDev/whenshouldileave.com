@@ -19,7 +19,7 @@ export default function DirectionsMockup({ resource }) {
 
 function Layout({ children }) {
   return (
-    <div className='relative w-full pt-5 pb-40 mx-auto md:px-6 max-w-screen-xl md:pb-24'>
+    <div className='relative w-full max-w-screen-xl pt-5 pb-40 mx-auto md:px-6 md:pb-24'>
       <div className='-mx-6'>
         <div className='max-w-2xl px-6 mx-auto text-left md:max-w-3xl'>
           <div

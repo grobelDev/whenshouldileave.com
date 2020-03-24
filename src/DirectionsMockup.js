@@ -28,7 +28,7 @@ export default function DirectionsMockup() {
 
 function Layout({ children }) {
   return (
-    <div className='relative w-full pt-5 pb-40 mx-auto max-w-screen-xl md:pb-24'>
+    <div className='relative w-full max-w-screen-xl pt-5 pb-40 mx-auto md:pb-24'>
       <div className='-mx-6'>
         <div className='max-w-2xl px-6 mx-auto text-left md:max-w-3xl'>
           <div
@@ -127,13 +127,7 @@ function SearchBars() {
     <div>
       <div className='flex'>
         <div className='flex-grow pl-2 pr-6'>
-          <MaterialAutocomplete
-            label='Starting Point'
-            // onSelect={handleDestinationInput}
-            // setInput={setStartingPoint}
-            // onChange={handleStartingInput}
-            // handleInput={handleStartingInput}
-          ></MaterialAutocomplete>
+          <MaterialAutocomplete label='Starting Point'></MaterialAutocomplete>
         </div>
         <div className='flex flex-col justify-center'>
           <SwapVertIcon
@@ -146,13 +140,7 @@ function SearchBars() {
 
       <div className='flex mt-2'>
         <div className='flex-grow pl-2 pr-6'>
-          <MaterialAutocomplete
-            label='Destination'
-            // onSelect={handleDestinationInput}
-            // setInput={setStartingPoint}
-            // onChange={handleStartingInput}
-            // handleInput={handleStartingInput}
-          ></MaterialAutocomplete>
+          <MaterialAutocomplete label='Destination'></MaterialAutocomplete>
         </div>
         <div className='flex flex-col justify-center'>
           <SearchIcon

@@ -5,7 +5,7 @@ export default function Navbar({ children }) {
   return (
     <div className='pt-24 bg-gray-100 lg:pt-0'>
       <div className='fixed inset-x-0 top-0 z-50 flex items-center min-w-0 bg-gray-100 border-b-2 border-gray-200 lg:border-b-0 '>
-        <div className='relative w-full px-6 mx-auto max-w-screen-xl'>
+        <div className='relative w-full max-w-screen-xl px-6 mx-auto'>
           <div className='flex flex-col justify-center h-16 lg:border-b-2 lg:border-gray-300'>
             <div className='flex items-center -mx-6'>
               <div className='pl-6 pr-6 lg:w-1/3 xl:w-1/4'>

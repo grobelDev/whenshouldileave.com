@@ -66,16 +66,16 @@ export default function App() {
     <Fragment>
       <Navbar>
         <Switch>
-          <Route exact path="/">
+          <Route exact path='/'>
             <HomePage />
           </Route>
-          <Route path="/directions">
+          <Route path='/directions'>
             <DirectionsPage />
           </Route>
-          <Route path="/results/:mode/:startingPoint/:destination">
+          <Route path='/results/:mode/:startingPoint/:destination'>
             <ResultsPage />
           </Route>
-          <Route exact path="/wireframes">
+          <Route exact path='/wireframes'>
             <StyledNav>
               <h1>Wireframe Components</h1>
               <ul>
@@ -87,17 +87,17 @@ export default function App() {
               </ul>
             </StyledNav>
           </Route>
-          <Route path="/SplashPageMockup">
+          <Route path='/SplashPageMockup'>
             <SplashPageMockup></SplashPageMockup>
             <DirectionsMockup></DirectionsMockup>
           </Route>
-          <Route path="/DirectionsMockup">
+          <Route path='/DirectionsMockup'>
             <DirectionsMockup></DirectionsMockup>
           </Route>
-          <Route path="/ResultsMockup">
+          <Route path='/ResultsMockup'>
             <ResultsMockup></ResultsMockup>
           </Route>
-          <Route path="/">
+          <Route path='/'>
             <div>404 Error (The requested page could not be found).</div>
           </Route>
         </Switch>
@@ -120,5 +120,13 @@ const StyledNav = styled.nav`
     font-weight: bold;
     margin-bottom: 1.5rem;
     font-size: 1.5rem;
+  }
+`;
+
+const HorizontalScrollingOff = styled.div`
+  html,
+  body {
+    max-width: 100% !important;
+    overflow-x: hidden !important;
   }
 `;
