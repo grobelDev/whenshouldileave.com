@@ -111,10 +111,6 @@ function ResultsCells({ resource }) {
    let results = resource.directions.read();
    let env = process.env.NODE_ENV || "development";
 
-   // console.log(results);
-   // let startingPoint = results[0].query.origin;
-   // let destination = results[0].query.destination;
-
    return (
       <Fragment>
          {/* <div>This trip takes 14 mins on average.</div> */}
@@ -234,9 +230,6 @@ function ResultsCell({
                      {durationInTraffic}
                   </span>
                </div>
-               {/* <div className='flex items-center justify-end pl-8 text-gray-600'>
-            <div>Total Time is {typicalDuration}</div>
-          </div> */}
                <div className="flex items-center justify-end pl-8 text-gray-600">
                   <div>Arrive around {arrivalTime}</div>
                </div>

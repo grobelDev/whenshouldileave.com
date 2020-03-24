@@ -1,11 +1,4 @@
-import React, {
-  useState,
-  // useTransition,
-  // Suspense,
-  // useEffect,
-  // ErrorBoundary,
-  Fragment
-} from 'react';
+import React, { useState, Fragment } from 'react';
 import styled from 'styled-components';
 
 import {
@@ -16,11 +9,7 @@ import {
   Link
 } from 'react-router-dom';
 
-// import GooglePlacesAutocomplete from 'react-google-places-autocomplete';
-// import MaterialAutocomplete from './MaterialAutocomplete';
-
 import { fetchData } from './api';
-// import Results from './Results';
 
 import Navbar from './Navbar';
 import HomePage from './HomePage';
@@ -50,27 +39,10 @@ const routes = [
 ];
 
 export default function App() {
-  // const [resource, setResource] = useState(initialResource);
   const [resource, setResource] = useState();
 
   const [startingPoint, setStartingPoint] = useState(null);
   const [destination, setDestination] = useState(null);
-  // const [startTransition, isPending] = useTransition({
-  //   // Wait 10 seconds before fallback
-  //   timeoutMs: 1000
-  // });
-
-  //     startTransition(() => {
-  //       setResource(newResource);
-  //     });
-
-  // useEffect(() => {
-  //   if (!startingPoint || !destination) {
-  //     return;
-  //   }
-
-  //   setResource(fetchData(startingPoint, destination));
-  // }, [startingPoint, destination]);
 
   function handleStartingInput(input) {
     console.log(input);
@@ -94,16 +66,16 @@ export default function App() {
     <Fragment>
       <Navbar>
         <Switch>
-          <Route exact path='/'>
+          <Route exact path="/">
             <HomePage />
           </Route>
-          <Route path='/directions'>
+          <Route path="/directions">
             <DirectionsPage />
           </Route>
-          <Route path='/results/:mode/:startingPoint/:destination'>
+          <Route path="/results/:mode/:startingPoint/:destination">
             <ResultsPage />
           </Route>
-          <Route exact path='/wireframes'>
+          <Route exact path="/wireframes">
             <StyledNav>
               <h1>Wireframe Components</h1>
               <ul>
@@ -115,17 +87,17 @@ export default function App() {
               </ul>
             </StyledNav>
           </Route>
-          <Route path='/SplashPageMockup'>
+          <Route path="/SplashPageMockup">
             <SplashPageMockup></SplashPageMockup>
             <DirectionsMockup></DirectionsMockup>
           </Route>
-          <Route path='/DirectionsMockup'>
+          <Route path="/DirectionsMockup">
             <DirectionsMockup></DirectionsMockup>
           </Route>
-          <Route path='/ResultsMockup'>
+          <Route path="/ResultsMockup">
             <ResultsMockup></ResultsMockup>
           </Route>
-          <Route path='/'>
+          <Route path="/">
             <div>404 Error (The requested page could not be found).</div>
           </Route>
         </Switch>

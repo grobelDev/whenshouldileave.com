@@ -8,7 +8,7 @@ import DirectionsBikeIcon from '@material-ui/icons/DirectionsBike';
 
 export function PageLayout({ children }) {
   return (
-    <div className='relative w-full pt-5 pb-40 mx-auto max-w-screen-xl md:pb-24'>
+    <div className='relative w-full max-w-screen-xl pt-5 pb-40 mx-auto md:pb-24'>
       <div className='-mx-6'>
         <div className='max-w-2xl px-6 mx-auto text-left md:max-w-3xl'>
           <div
@@ -32,7 +32,6 @@ export function PageHeader({ children }) {
             <h1 className='text-3xl font-light'>Directions</h1>
             <div className='mt-2 text-gray-600'>May your roads be green.</div>
 
-            {/* <hr className='mt-4 mb-8 border-b-2 border-gray-200'></hr> */}
             <div className='flex flex-grow w-full max-w-3xl px-6 mx-auto'></div>
           </div>
           <div className='flex'>
