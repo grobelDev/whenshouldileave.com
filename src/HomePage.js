@@ -6,6 +6,12 @@ import DirectionsPage from './DirectionsPage';
 const scrollToRef = ref => window.scrollTo(0, ref.current.offsetTop);
 const useMountEffect = fun => useEffect(fun, []);
 
+/**
+ * Central Component for HomePage meta-component.
+ * Consumed in App.js
+ *
+ */
+
 export default function HomePage() {
   const myRef = useRef(null);
   const isInitialMount = useRef(true);

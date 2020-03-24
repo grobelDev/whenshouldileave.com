@@ -23,6 +23,12 @@ import {
   // SearchIcons
 } from './DirectionsPageStatic';
 
+/**
+ * Central Component for DirectionsPage meta-component.
+ * Consumed in App.js
+ *
+ */
+
 export default function DirectionsPage() {
   const [startingPoint, setStartingPoint] = useState('');
   const [destination, setDestination] = useState('');
