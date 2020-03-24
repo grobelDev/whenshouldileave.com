@@ -11,11 +11,6 @@ export default function Navbar({ children }) {
               <div className='pl-6 pr-6 lg:w-1/3 xl:w-1/4'>
                 <div className='flex items-center'>
                   <Link to='/' className='flex items-center'>
-                    {/* <img
-                className='w-auto h-12 pr-1'
-                src='https://i.imgur.com/2mdtBD3.png'
-                alt='grobelDevIcon'
-              ></img> */}
                     <div className='text-xl text-blue-800 font-regular md:block'>
                       When Should I Leave
                     </div>

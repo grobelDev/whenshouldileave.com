@@ -255,20 +255,6 @@ function ResultsCellSelected({ startingPoint, destination, travelMode }) {
             <span className='text-blue-600'>Open in Google Maps</span>
           </a>
         </div>
-        {/* <div className="flex items-center pt-2">
-               <EmailIcon className="mr-3"></EmailIcon>
-               <span className="text-blue-600">Email results</span>
-            </div> */}
-        {/* <div className='flex items-center pt-2'>
-          <NotificationsIcon className='mr-3'></NotificationsIcon>
-          <span className='text-blue-600'>
-            Set reminder to leave 10 minutes before.
-          </span>
-        </div> */}
-        {/* <div className="flex items-center pt-2">
-               <ShareIcon className="mr-3"></ShareIcon>{" "}
-               <span className="text-blue-600">Share</span>
-            </div> */}
       </div>
     </Fragment>
   );
@@ -311,9 +297,9 @@ function RoutesDetail({ route, time }) {
 // Layout
 function PageLayoutV2({ children }) {
   return (
-    <div className='relative w-full max-w-screen-xl px-6 pt-16 pb-10 mx-auto md:pt-32 md:pb-24'>
-      <div className='-mx-6 xl:flex'>
-        <div className='max-w-2xl px-6 mx-auto text-left md:max-w-3xl'>
+    <div className='relative w-full max-w-screen-xl px-6 pt-8 pb-10 mx-auto'>
+      <div className='-mx-6'>
+        <div className='max-w-2xl px-6 mx-auto text-center sm:text-left'>
           {children}
         </div>
       </div>
@@ -326,17 +312,11 @@ function PageHeader({ children }) {
     <div id='content'>
       <div id='app' className='flex'>
         <div className='w-full pt-12 pb-16 lg:pt-28'>
-          <div className='max-w-3xl px-6 mx-auto mb-4'>
+          <div className='max-w-3xl mb-4'>
             <h1 className='text-3xl font-light'>When Should I Leave?</h1>
-            {/* <div className='mt-2 text-gray-600'>May your roads be green.</div> */}
-
-            {/* <hr className='mt-4 mb-8 border-b-2 border-gray-200'></hr> */}
-            <div className='flex flex-grow w-full max-w-3xl px-6 mx-auto'></div>
           </div>
-          <div className='flex'>
-            <div className='w-full max-w-3xl mx-auto -px-6 md:px-6'>
-              {children}
-            </div>
+          <div className=''>
+            <div className='w-full max-w-3xl mx-auto'>{children}</div>
           </div>
         </div>
       </div>
