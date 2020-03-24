@@ -147,10 +147,10 @@ function ResultsCells({ resource }) {
 
         let routeColor = getColorFromPercentDifference(percentDifference);
 
-        console.log(routeColor);
-        console.log(percentDifference);
-        // console.log(typicalDuration);
-        console.log(result);
+        //   console.log(routeColor);
+        //   console.log(percentDifference);
+        //   // console.log(typicalDuration);
+        //   console.log(result);
         // console.log(durationInTrafficObject, minutesInTraffic, textInTraffic);
         // console.log(durationInTrafficString);
 
