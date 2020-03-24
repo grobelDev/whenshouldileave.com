@@ -9,8 +9,6 @@ import NotificationsIcon from '@material-ui/icons/Notifications';
 export default function DirectionsMockup({ resource }) {
   return (
     <Layout>
-      {/* <DirectionsDetail></DirectionsDetail> */}
-      {/* <DirectionsCells></DirectionsCells> */}
       <DirectionsCellsV3></DirectionsCellsV3>
       <DirectionsCellSelected></DirectionsCellSelected>
     </Layout>
@@ -67,7 +65,6 @@ function DirectionsCellsV3() {
     <div>
       <StyledListItem className='p-4 font-normal bg-gray-100 border shadow-lg md:rounded-lg '>
         <div className='flex justify-between'>
-          {/* <div className='leading-none'> */}
           <div className='flex items-center'>
             <div className='pr-4 text-gray-600 hover:text-black'>
               <ArrowForwardIosIcon
@@ -77,24 +74,15 @@ function DirectionsCellsV3() {
             <div className='text-2xl font-light'>10:12 PM (Now)</div>
           </div>
 
-          {/* </div> */}
-          {/* <div className='text-2xl font-light text-gray-600'>(44.2 miles)</div> */}
           <span className='text-2xl text-yellow-600'>40 min</span>
-
-          {/* <div className='text-base font-normal'> */}
-          {/* 7:45 PM */}
-          {/* Data from the last {'count'} games. */}
-          {/* </div> */}
         </div>
         <div className='flex items-center justify-end pl-8 text-gray-600'>
-          {/* <div className='text-sm font-semibold text-blue-500'>DETAILS</div> */}
           <div>Arrive around 10:52 PM</div>
         </div>
       </StyledListItem>
 
       <StyledListItem className='p-4 font-normal bg-gray-100 border shadow-lg md:rounded-lg '>
         <div className='flex justify-between'>
-          {/* <div className='leading-none'> */}
           <div className='flex items-center'>
             <div className='pr-4 text-gray-600 hover:text-black'>
               <ArrowForwardIosIcon
@@ -104,23 +92,14 @@ function DirectionsCellsV3() {
             <div className='text-2xl font-light'>10:30 PM</div>
           </div>
 
-          {/* </div> */}
-          {/* <div className='text-2xl font-light text-gray-600'>(44.2 miles)</div> */}
           <span className='text-2xl text-yellow-600'>57 min</span>
-
-          {/* <div className='text-base font-normal'> */}
-          {/* 7:45 PM */}
-          {/* Data from the last {'count'} games. */}
-          {/* </div> */}
         </div>
         <div className='flex items-center justify-end pl-8 text-gray-600'>
-          {/* <div className='text-sm font-semibold text-blue-500'>DETAILS</div> */}
           <div>Arrive around 11:27 PM</div>
         </div>
       </StyledListItem>
       <StyledListItem className='p-4 font-normal bg-gray-100 border shadow-lg md:rounded-lg '>
         <div className='flex justify-between'>
-          {/* <div className='leading-none'> */}
           <div className='flex items-center'>
             <div className='pr-4 text-gray-600 hover:text-black'>
               <ArrowForwardIosIcon
@@ -130,23 +109,14 @@ function DirectionsCellsV3() {
             <div className='text-2xl font-light'>11:00 PM</div>
           </div>
 
-          {/* </div> */}
-          {/* <div className='text-2xl font-light text-gray-600'>(44.2 miles)</div> */}
           <span className='text-2xl text-yellow-600'>1 h 10 min</span>
-
-          {/* <div className='text-base font-normal'> */}
-          {/* 7:45 PM */}
-          {/* Data from the last {'count'} games. */}
-          {/* </div> */}
         </div>
         <div className='flex items-center justify-end pl-8 text-gray-600'>
-          {/* <div className='text-sm font-semibold text-blue-500'>DETAILS</div> */}
           <div>Arrive around 12:40 PM</div>
         </div>
       </StyledListItem>
       <StyledListItem className='p-4 font-normal bg-gray-100 border shadow-lg md:rounded-lg'>
         <div className='flex justify-between'>
-          {/* <div className='leading-none'> */}
           <div className='flex items-center'>
             <div className='pr-4 text-gray-600 hover:text-black'>
               <ArrowForwardIosIcon
@@ -156,17 +126,9 @@ function DirectionsCellsV3() {
             <div className='text-2xl font-light'>11:30 PM</div>
           </div>
 
-          {/* </div> */}
-          {/* <div className='text-2xl font-light text-gray-600'>(44.2 miles)</div> */}
           <span className='text-2xl text-green-600'>40 min</span>
-
-          {/* <div className='text-base font-normal'> */}
-          {/* 7:45 PM */}
-          {/* Data from the last {'count'} games. */}
-          {/* </div> */}
         </div>
         <div className='flex items-center justify-end pl-8 text-gray-600'>
-          {/* <div className='text-sm font-semibold text-blue-500'>DETAILS</div> */}
           <div>Arrive around 12:10 PM</div>
         </div>
       </StyledListItem>
@@ -179,7 +141,6 @@ function DirectionsCellsV2() {
     <div>
       <StyledListItem className='p-4 font-normal bg-gray-100 border shadow-lg md:rounded-lg md:mt-4'>
         <div className='flex justify-between'>
-          {/* <div className='leading-none'> */}
           <div className='flex items-center'>
             <div className='pr-4 text-gray-600 hover:text-black'>
               <ArrowForwardIosIcon
@@ -189,24 +150,15 @@ function DirectionsCellsV2() {
             <div className='text-2xl font-light'>10:12 PM (Now)</div>
           </div>
 
-          {/* </div> */}
-          {/* <div className='text-2xl font-light text-gray-600'>(44.2 miles)</div> */}
           <span className='text-2xl text-yellow-600'>40 min</span>
-
-          {/* <div className='text-base font-normal'> */}
-          {/* 7:45 PM */}
-          {/* Data from the last {'count'} games. */}
-          {/* </div> */}
         </div>
         <div className='flex items-center justify-end pl-8 text-gray-600'>
-          {/* <div className='text-sm font-semibold text-blue-500'>DETAILS</div> */}
           <div>Arrive around 10:52 PM</div>
         </div>
       </StyledListItem>
 
       <StyledListItem className='p-4 font-normal bg-gray-100 border shadow-lg md:rounded-lg md:mt-4'>
         <div className='flex justify-between'>
-          {/* <div className='leading-none'> */}
           <div className='flex items-center'>
             <div className='pr-4 text-gray-600 hover:text-black'>
               <ArrowForwardIosIcon
@@ -216,23 +168,14 @@ function DirectionsCellsV2() {
             <div className='text-2xl font-light'>10:30 PM</div>
           </div>
 
-          {/* </div> */}
-          {/* <div className='text-2xl font-light text-gray-600'>(44.2 miles)</div> */}
           <span className='text-2xl text-yellow-600'>57 min</span>
-
-          {/* <div className='text-base font-normal'> */}
-          {/* 7:45 PM */}
-          {/* Data from the last {'count'} games. */}
-          {/* </div> */}
         </div>
         <div className='flex items-center justify-end pl-8 text-gray-600'>
-          {/* <div className='text-sm font-semibold text-blue-500'>DETAILS</div> */}
           <div>Arrive around 11:27 PM</div>
         </div>
       </StyledListItem>
       <StyledListItem className='p-4 font-normal bg-gray-100 border shadow-lg md:rounded-lg md:mt-4'>
         <div className='flex justify-between'>
-          {/* <div className='leading-none'> */}
           <div className='flex items-center'>
             <div className='pr-4 text-gray-600 hover:text-black'>
               <ArrowForwardIosIcon
@@ -242,23 +185,14 @@ function DirectionsCellsV2() {
             <div className='text-2xl font-light'>11:00 PM</div>
           </div>
 
-          {/* </div> */}
-          {/* <div className='text-2xl font-light text-gray-600'>(44.2 miles)</div> */}
           <span className='text-2xl text-yellow-600'>1 h 10 min</span>
-
-          {/* <div className='text-base font-normal'> */}
-          {/* 7:45 PM */}
-          {/* Data from the last {'count'} games. */}
-          {/* </div> */}
         </div>
         <div className='flex items-center justify-end pl-8 text-gray-600'>
-          {/* <div className='text-sm font-semibold text-blue-500'>DETAILS</div> */}
           <div>Arrive around 12:40 PM</div>
         </div>
       </StyledListItem>
       <StyledListItem className='p-4 font-normal bg-gray-100 border shadow-lg md:rounded-lg md:mt-4'>
         <div className='flex justify-between'>
-          {/* <div className='leading-none'> */}
           <div className='flex items-center'>
             <div className='pr-4 text-gray-600 hover:text-black'>
               <ArrowForwardIosIcon
@@ -268,17 +202,9 @@ function DirectionsCellsV2() {
             <div className='text-2xl font-light'>11:30 PM</div>
           </div>
 
-          {/* </div> */}
-          {/* <div className='text-2xl font-light text-gray-600'>(44.2 miles)</div> */}
           <span className='text-2xl text-green-600'>40 min</span>
-
-          {/* <div className='text-base font-normal'> */}
-          {/* 7:45 PM */}
-          {/* Data from the last {'count'} games. */}
-          {/* </div> */}
         </div>
         <div className='flex items-center justify-end pl-8 text-gray-600'>
-          {/* <div className='text-sm font-semibold text-blue-500'>DETAILS</div> */}
           <div>Arrive around 12:10 PM</div>
         </div>
       </StyledListItem>
@@ -291,7 +217,6 @@ function DirectionsCellSelected() {
     <div>
       <StyledListItem className='p-4 font-normal bg-gray-100 border shadow-lg md:rounded-lg '>
         <div className='flex justify-between'>
-          {/* <div className='leading-none'> */}
           <div className='flex items-center'>
             <div className='pr-4 text-gray-600 hover:text-black'>
               <StyledRotatedArrow>
@@ -305,7 +230,6 @@ function DirectionsCellSelected() {
           <span className='text-2xl text-green-600'>35 min</span>
         </div>
         <div className='flex items-center justify-end pl-8 text-gray-600'>
-          {/* <div className='text-sm font-semibold text-blue-500'>DETAILS</div> */}
           <div>Arrive around 12:35 PM</div>
         </div>
 
@@ -336,7 +260,6 @@ function DirectionsCells() {
     <div>
       <StyledListItem className='p-4 font-normal bg-gray-100 border rounded-lg shadow-lg'>
         <div className='flex justify-between'>
-          {/* <div className='leading-none'> */}
           <div className='flex items-center'>
             <div className='pr-4 text-gray-600 hover:text-black'>
               <ArrowForwardIosIcon
@@ -346,14 +269,7 @@ function DirectionsCells() {
             <span className='text-2xl text-red-600'>1 h 5 min</span>
           </div>
 
-          {/* </div> */}
-          {/* <div className='text-2xl font-light text-gray-600'>(44.2 miles)</div> */}
           <div className='text-2xl font-light '>7:30 PM</div>
-
-          {/* <div className='text-base font-normal'> */}
-          {/* 7:45 PM */}
-          {/* Data from the last {'count'} games. */}
-          {/* </div> */}
         </div>
         <div className='pl-8 text-gray-600'>
           <div>via I-15 S</div>
@@ -362,7 +278,6 @@ function DirectionsCells() {
       </StyledListItem>
       <StyledListItem className='p-4 mt-4 font-normal bg-gray-100 border rounded-lg shadow-lg'>
         <div className='flex justify-between'>
-          {/* <div className='leading-none'> */}
           <div className='flex items-center'>
             <div className='pr-4 text-gray-600 hover:text-black'>
               <ArrowForwardIosIcon
@@ -372,23 +287,14 @@ function DirectionsCells() {
             <span className='text-2xl text-green-600'>45 min</span>
           </div>
 
-          {/* </div> */}
-          {/* <div className='text-2xl font-light text-gray-600'>(44.2 miles)</div> */}
           <div className='text-2xl font-light'>8:00 PM</div>
-
-          {/* <div className='text-base font-normal'> */}
-          {/* 7:45 PM */}
-          {/* Data from the last {'count'} games. */}
-          {/* </div> */}
         </div>
         <div className='pl-8 text-gray-600'>
-          {/* <div>via I-15 S</div> */}
           <div>Predicted best route, despite the usual traffic</div>
         </div>
       </StyledListItem>
       <StyledListItem className='p-4 mt-4 font-normal bg-gray-100 border rounded-lg shadow-lg'>
         <div className='flex justify-between'>
-          {/* <div className='leading-none'> */}
           <div className='flex items-center'>
             <div className='pr-4 text-gray-600 hover:text-black'>
               <ArrowForwardIosIcon
@@ -398,14 +304,7 @@ function DirectionsCells() {
             <span className='text-2xl text-yellow-600'>1 h</span>
           </div>
 
-          {/* </div> */}
-          {/* <div className='text-2xl font-light text-gray-600'>(44.2 miles)</div> */}
           <div className='text-2xl font-light '>8:30 PM</div>
-
-          {/* <div className='text-base font-normal'> */}
-          {/* 7:45 PM */}
-          {/* Data from the last {'count'} games. */}
-          {/* </div> */}
         </div>
         <div className='pl-8 text-gray-600'>
           <div>via I-15 S</div>
@@ -417,9 +316,6 @@ function DirectionsCells() {
           <div className='flex items-center'>
             <div className='pl-2 pr-4 text-gray-700'>
               <DriveEtaIcon style={{ fontSize: 25 }}></DriveEtaIcon>
-              {/* <ArrowForwardIosIcon
-                style={{ fontSize: 15 }}
-              ></ArrowForwardIosIcon> */}
             </div>
             <span className='text-2xl text-green-600'>50 m</span>
           </div>
@@ -427,9 +323,6 @@ function DirectionsCells() {
         </div>
         <div className='pl-12 text-gray-600'>
           <div className='flex justify-end'>Arrive around 9:45 PM</div>
-          {/* <div className='flex justify-end'>
-            Predicted best route, despite the usual traffic
-          </div> */}
         </div>
       </StyledListItem>
       <StyledListItem className='p-4 mt-4 font-normal bg-gray-100 border rounded-lg shadow-lg'>
@@ -437,9 +330,6 @@ function DirectionsCells() {
           <div className='flex items-center'>
             <div className='pl-2 pr-4 text-gray-700'>
               <DriveEtaIcon style={{ fontSize: 25 }}></DriveEtaIcon>
-              {/* <ArrowForwardIosIcon
-                style={{ fontSize: 15 }}
-              ></ArrowForwardIosIcon> */}
             </div>
             <span className='text-2xl text-green-600'>50 m</span>
           </div>
@@ -447,19 +337,14 @@ function DirectionsCells() {
         </div>
 
         <div className='text-gray-600'>
-          {/* <div className=''>sdf</div> */}
           <div className='flex justify-between pl-12'>
             <div className='text-sm font-semibold text-blue-500'>DETAILS</div>
             <div>Arrive around 10:20 PM</div>
           </div>
-          {/* <div className='flex justify-end'>
-            Predicted best route, despite the usual traffic
-          </div> */}
         </div>
       </StyledListItem>
       <StyledListItemSelected className='p-4 mt-4 font-normal bg-gray-100 border border-l-4 rounded-lg shadow-lg'>
         <div className='flex justify-between'>
-          {/* <div className='leading-none'> */}
           <div className='flex items-center'>
             <div className='pr-4 text-gray-600 hover:text-black'>
               <ArrowForwardIosIcon
@@ -469,14 +354,7 @@ function DirectionsCells() {
             <span className='text-2xl text-yellow-600'>1 h</span>
           </div>
 
-          {/* </div> */}
-          {/* <div className='text-2xl font-light text-gray-600'>(44.2 miles)</div> */}
           <div className='text-2xl font-light'>10:00 PM</div>
-
-          {/* <div className='text-base font-normal'> */}
-          {/* 7:45 PM */}
-          {/* Data from the last {'count'} games. */}
-          {/* </div> */}
         </div>
         <div className='flex justify-between pl-8 text-gray-600'>
           <div className='text-sm font-semibold text-blue-500'>DETAILS</div>
@@ -485,7 +363,6 @@ function DirectionsCells() {
       </StyledListItemSelected>
       <StyledListItem className='p-4 mt-4 font-normal bg-gray-100 border shadow-lg md:rounded-lg'>
         <div className='flex justify-between'>
-          {/* <div className='leading-none'> */}
           <div className='flex items-center'>
             <div className='pr-4 text-gray-600 hover:text-black'>
               <ArrowForwardIosIcon
@@ -495,23 +372,14 @@ function DirectionsCells() {
             <span className='text-2xl text-yellow-600'>1 h</span>
           </div>
 
-          {/* </div> */}
-          {/* <div className='text-2xl font-light text-gray-600'>(44.2 miles)</div> */}
           <div className='text-2xl font-light'>10:30 PM</div>
-
-          {/* <div className='text-base font-normal'> */}
-          {/* 7:45 PM */}
-          {/* Data from the last {'count'} games. */}
-          {/* </div> */}
         </div>
         <div className='flex justify-end pl-8 text-gray-600'>
-          {/* <div className='text-sm font-semibold text-blue-500'>DETAILS</div> */}
           <div>Arrive around 11:30 PM</div>
         </div>
       </StyledListItem>
       <StyledListItem className='p-4 font-normal bg-gray-100 border shadow-lg md:rounded-lg md:mt-4'>
         <div className='flex justify-between'>
-          {/* <div className='leading-none'> */}
           <div className='flex items-center'>
             <div className='pr-4 text-gray-600 hover:text-black'>
               <ArrowForwardIosIcon
@@ -521,23 +389,14 @@ function DirectionsCells() {
             <div className='text-2xl font-light'>10:30 PM</div>
           </div>
 
-          {/* </div> */}
-          {/* <div className='text-2xl font-light text-gray-600'>(44.2 miles)</div> */}
           <span className='text-2xl text-yellow-600'>57 min</span>
-
-          {/* <div className='text-base font-normal'> */}
-          {/* 7:45 PM */}
-          {/* Data from the last {'count'} games. */}
-          {/* </div> */}
         </div>
         <div className='flex justify-end pl-8 text-gray-600'>
-          {/* <div className='text-sm font-semibold text-blue-500'>DETAILS</div> */}
           <div>Arrive around 11:27 PM</div>
         </div>
       </StyledListItem>
       <StyledListItem className='p-4 mt-4 font-normal bg-gray-100 border rounded-lg shadow-lg'>
         <div className='flex justify-between'>
-          {/* <div className='leading-none'> */}
           <div className='flex items-center'>
             <div className='pr-4 text-gray-600 hover:text-black'>
               <ArrowForwardIosIcon
@@ -547,17 +406,9 @@ function DirectionsCells() {
             <div className='text-2xl font-light'>11:00 PM</div>
           </div>
 
-          {/* </div> */}
-          {/* <div className='text-2xl font-light text-gray-600'>(44.2 miles)</div> */}
           <span className='text-2xl text-yellow-600'>1 h 10 min</span>
-
-          {/* <div className='text-base font-normal'> */}
-          {/* 7:45 PM */}
-          {/* Data from the last {'count'} games. */}
-          {/* </div> */}
         </div>
         <div className='flex justify-end pl-8 text-gray-600'>
-          {/* <div className='text-sm font-semibold text-blue-500'>DETAILS</div> */}
           <div>Arrive around 12:40 PM</div>
         </div>
       </StyledListItem>
@@ -566,9 +417,6 @@ function DirectionsCells() {
           <div className='flex items-center'>
             <div className='pl-2 pr-4 text-gray-700'>
               <DriveEtaIcon style={{ fontSize: 25 }}></DriveEtaIcon>
-              {/* <ArrowForwardIosIcon
-                style={{ fontSize: 15 }}
-              ></ArrowForwardIosIcon> */}
             </div>
             <div className='text-2xl font-light'>9:00 PM</div>
           </div>
@@ -576,9 +424,6 @@ function DirectionsCells() {
         </div>
         <div className='pl-12 text-gray-600'>
           <div className='flex justify-beginning'>Arrive around 9:45 PM</div>
-          {/* <div className='flex justify-end'>
-            Predicted best route, despite the usual traffic
-          </div> */}
         </div>
       </StyledListItem>
       <StyledListItem className='p-4 mt-4 font-normal bg-gray-100 border rounded-lg shadow-lg'>
@@ -586,9 +431,6 @@ function DirectionsCells() {
           <div className='flex items-center'>
             <div className='pl-2 pr-4 text-gray-700'>
               <DriveEtaIcon style={{ fontSize: 25 }}></DriveEtaIcon>
-              {/* <ArrowForwardIosIcon
-                style={{ fontSize: 15 }}
-              ></ArrowForwardIosIcon> */}
             </div>
             <div className='text-2xl font-light'>9:00 PM</div>
           </div>
@@ -596,9 +438,6 @@ function DirectionsCells() {
         </div>
         <div className='pl-12 text-gray-600'>
           <div className='flex justify-end'>Arrive around 9:45 PM</div>
-          {/* <div className='flex justify-end'>
-            Predicted best route, despite the usual traffic
-          </div> */}
         </div>
       </StyledListItem>
 
@@ -607,9 +446,6 @@ function DirectionsCells() {
           <div className='flex items-center'>
             <div className='pl-2 pr-4 text-gray-700'>
               <DriveEtaIcon style={{ fontSize: 25 }}></DriveEtaIcon>
-              {/* <ArrowForwardIosIcon
-                style={{ fontSize: 15 }}
-              ></ArrowForwardIosIcon> */}
             </div>
             <div className='text-2xl font-light'>9:00 PM</div>
           </div>
@@ -617,9 +453,6 @@ function DirectionsCells() {
         </div>
         <div className='pl-12 text-gray-600'>
           <div className='flex justify-beginning'>Arrive around 9:45 PM</div>
-          {/* <div className='flex justify-end'>
-            Predicted best route, despite the usual traffic
-          </div> */}
         </div>
       </StyledListItem>
       <StyledListItem className='p-4 font-normal bg-gray-100 border shadow-lg md:rounded-lg'>
@@ -627,9 +460,6 @@ function DirectionsCells() {
           <div className='flex items-center'>
             <div className='pl-2 pr-4 text-gray-700'>
               <DriveEtaIcon style={{ fontSize: 25 }}></DriveEtaIcon>
-              {/* <ArrowForwardIosIcon
-                style={{ fontSize: 15 }}
-              ></ArrowForwardIosIcon> */}
             </div>
             <div className='text-2xl font-light'>9:00 PM</div>
           </div>
@@ -637,36 +467,8 @@ function DirectionsCells() {
         </div>
         <div className='pl-12 text-gray-600'>
           <div className='flex justify-beginning'>Arrive around 9:45 PM</div>
-          {/* <div className='flex justify-end'>
-            Predicted best route, despite the usual traffic
-          </div> */}
         </div>
       </StyledListItem>
-      {/* <ul ref={listRef}>
-              {cellIds.map(id => {
-                const isBeingDeleted = id === deletingId;
-                const { avatar, title, message, profileImage } = cells[
-                  id % cells.length
-                ];
-                return (
-                  <ListItem
-                    key={id}
-                    profileImage={profileImage}
-                    id={id}
-                    isBeingDeleted={isBeingDeleted}
-                    avatar={avatar}
-                    title={title}
-                    message={message}
-                    name={name}
-                    region={props.region}
-                  />
-                );
-              })}
-              <StyledCollapseHandler
-                ref={collapseHandlerRef}
-                exitDuration={exitDuration}
-              />
-            </ul> */}
     </div>
   );
 }

@@ -27,10 +27,7 @@ function Layout({ children }) {
                       Find the most efficent time.
                     </div>
                     <hr className='my-8 border-b-2 border-gray-200'></hr>
-                    {/* <img
-                    src='https://cdn.discordapp.com/attachments/636565266356240394/648592273214275604/screenshot.png'
-                    alt='grobelExtensionImage'
-                  ></img> */}
+
                     <div className='flex flex-grow w-full max-w-3xl px-6 mx-auto'></div>
                   </div>
                   <div className='flex'>

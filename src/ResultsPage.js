@@ -64,12 +64,8 @@ function ResultsDetail({ resource }) {
   let results = resource.directions.read();
   let env = process.env.NODE_ENV || 'development';
 
-  // console.log(results);
   let startingPoint = results[0].query.origin;
   let destination = results[0].query.destination;
-
-  // let startingPoint = 'startingPoint';
-  // let destination = 'destination';
 
   return (
     <div>
@@ -112,7 +108,6 @@ function ResultsCells({ resource }) {
 
   return (
     <Fragment>
-      {/* <div>This trip takes 14 mins on average.</div> */}
       {results.map(result => {
         let startingPoint = result.query.origin;
         let destination = result.query.destination;
@@ -123,14 +118,10 @@ function ResultsCells({ resource }) {
         let departureTime = new Date(0); // The 0 there is the key, which sets the date to the epoch
         departureTime.setUTCSeconds(departureTimeEpoch);
         let departureTimeString = formatAMPM(departureTime);
-        // console.log(departureTimeReturn);
-        // console.log(departureTimeString);
 
         let durationInTrafficObject =
           result.json.routes[0].legs[0].duration_in_traffic;
         let durationInTrafficEpoch = durationInTrafficObject.value;
-        // let textInTraffic = durationInTrafficObject.text.split(' ')[0];
-        // let durationInTrafficString = `${textInTraffic} min`;
 
         let durationInTraffic = durationInTrafficObject.text;
 
@@ -139,20 +130,10 @@ function ResultsCells({ resource }) {
           typicalDurationEpoch,
           durationInTrafficEpoch
         );
-        // let typicalDurationText = result.json.routes[0].legs[0].duration.text;
-        // let typicalDurationStringValue = typicalDurationText.split(' ')[0];
-        // let typicalDurationString = `${typicalDurationStringValue} min`;
-        // let typicalDuration = typicalDurationText
+
         let typicalDuration = result.json.routes[0].legs[0].duration.text;
 
         let routeColor = getColorFromPercentDifference(percentDifference);
-
-        //   console.log(routeColor);
-        //   console.log(percentDifference);
-        //   // console.log(typicalDuration);
-        //   console.log(result);
-        // console.log(durationInTrafficObject, minutesInTraffic, textInTraffic);
-        // console.log(durationInTrafficString);
 
         let arrivalTime = new Date(0);
         arrivalTime.setUTCSeconds(departureTimeEpoch + durationInTrafficEpoch);
@@ -198,8 +179,6 @@ function ResultsCell({
   routeColor
 }) {
   const [selected, setSelected] = useState(false);
-
-  // console.log(departureTime, durationInTraffic);
 
   return (
     <Fragment>
