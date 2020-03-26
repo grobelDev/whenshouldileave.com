@@ -23,6 +23,8 @@ import {
   // SearchIcons
 } from './DirectionsPageStatic';
 
+import './DirectionsPage.css';
+
 /**
  * Central Component for DirectionsPage meta-component.
  * Consumed in App.js
@@ -91,8 +93,6 @@ export default function DirectionsPage() {
             mode={mode}
             handleVertIconClick={handleVertIconClick}
             didSearch={didSearch}
-            mode={mode}
-            setMode={setMode}
             startingPoint={startingPoint}
             destination={destination}
             setStartingPoint={setStartingPoint}
@@ -197,12 +197,51 @@ function SearchDetails({
   );
 }
 
+let SearchDiv1 = styled.div`
+  display: flex;
+  padding-left: 1rem;
+  align-items: center;
+  padding-right: 1rem;
+  justify-content: space-between;
+
+  @media (min-width: 768px) {
+    justify-content: flex-start;
+  }
+`;
+
+let SearchIconsV2 = [
+  { name: 'driving', component: DriveEtaIcon },
+  {
+    name: 'transit',
+    component: DirectionsBusIcon
+  },
+  {
+    name: 'transit',
+    component: DirectionsBusIcon
+  }
+];
+const Search = { driving: DriveEtaIcon, transit: DirectionsBusIcon };
+
 function SearchIcons({ mode, setMode, handleModeClick }) {
+  let Div1 = styled.div`
+    display: flex;
+    padding-right: 2.5rem;
+  `;
+
   return (
-    <div className='flex items-center justify-between px-4 md:justify-start'>
-      <div className='flex pr-10'>
+    <SearchDiv1>
+      <div class='div1'>
         {mode === 'driving' ? (
           <button value='driving' onClick={() => setMode('driving')}>
+            {/* {Object.keys(Search).map(key => {
+              let Component = Search[key];
+              return (
+                <div>
+                  <Component />
+                </div>
+              );
+            })} */}
+
             <DriveEtaIcon></DriveEtaIcon>
             <div>Selected</div>
           </button>
@@ -212,7 +251,7 @@ function SearchIcons({ mode, setMode, handleModeClick }) {
           </button>
         )}
       </div>
-      <div className='flex pr-10'>
+      <div class='div1'>
         {mode === 'transit' ? (
           <button value='transit' onClick={() => setMode('transit')}>
             <DirectionsBusIcon></DirectionsBusIcon>
@@ -224,7 +263,7 @@ function SearchIcons({ mode, setMode, handleModeClick }) {
           </button>
         )}
       </div>
-      <div className='flex pr-10'>
+      <div class='div1'>
         {mode === 'walking' ? (
           <button value='walking' onClick={() => setMode('walking')}>
             <DirectionsWalkIcon></DirectionsWalkIcon>
@@ -248,7 +287,7 @@ function SearchIcons({ mode, setMode, handleModeClick }) {
           </button>
         )}
       </div>
-    </div>
+    </SearchDiv1>
   );
 }
 
@@ -262,32 +301,32 @@ function SearchBars({
 }) {
   return (
     <div>
-      <div className='flex'>
-        <div className='flex-grow pl-2 pr-6'>
+      <div className='searchDiv1'>
+        <div className='searchDiv2'>
           <MaterialAutocomplete
             label='Starting Point'
             setInput={setStartingPoint}
           ></MaterialAutocomplete>
         </div>
-        <div className='flex flex-col justify-center'>
+        <div className='searchDiv3'>
           {/* <button onClick={() => handleVertIconClick()}> */}
           <SwapVertIcon
             style={{ fontSize: 30, opacity: 0 }}
-            className='flex-grow-0 mx-2 mt-4'
+            className='searchSwapVertIcon1'
           ></SwapVertIcon>
           {/* </button> */}
         </div>
         <div></div>
       </div>
 
-      <div className='flex mt-2'>
-        <div className='flex-grow pl-2 pr-6'>
+      <div className='searchDiv4'>
+        <div className='searchDiv5'>
           <MaterialAutocomplete
             label='Destination'
             setInput={setDestination}
           ></MaterialAutocomplete>
         </div>
-        <div className='flex flex-col justify-center'>
+        <div className='searchDiv6'>
           <button
             onClick={() =>
               console.log(
@@ -302,7 +341,7 @@ function SearchBars({
           >
             <SearchIcon
               style={{ fontSize: 30 }}
-              className='flex-grow-0 mx-2 mt-4'
+              className='searchSearchIcon1'
             ></SearchIcon>
           </button>
         </div>
@@ -323,16 +362,16 @@ function SelectionResultsPreview({
   }
 
   return (
-    <div className='border rounded shadow-lg md:rounded-lg'>
-      <StyledListItem className='rounded'>
+    <div className='selectionDiv1'>
+      <StyledListItem className='selectionStyledListItem1'>
         {/* <img
           className='rounded'
           src='https://cdn.discordapp.com/attachments/675090859493949484/675152739214426132/screenshot.png'
         ></img> */}
-        <div className='flex justify-center py-4'>
+        <div className='selectionDiv2'>
           <button
             onClick={() => handleTimeEstimatesClick()}
-            className='px-4 py-2 font-bold text-white bg-blue-500 border-b-4 border-blue-700 rounded hover:bg-blue-400 hover:border-blue-500'
+            className='selectionButton1'
           >
             Get Time Estimates
           </button>

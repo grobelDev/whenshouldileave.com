@@ -126,11 +126,3 @@ const StyledNav = styled.nav`
     font-size: 1.5rem;
   }
 `;
-
-const HorizontalScrollingOff = styled.div`
-  html,
-  body {
-    max-width: 100% !important;
-    overflow-x: hidden !important;
-  }
-`;

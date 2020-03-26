@@ -1,0 +1,88 @@
+.div1 {
+  display: flex;
+  padding-right: 2.5rem;
+}
+
+.searchDiv1 {
+  display: flex;
+}
+
+.searchDiv2 {
+  flex-grow: 1;
+  padding-left: 0.5rem;
+  padding-right: 1.5rem;
+}
+
+.searchDiv3 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.searchSwapVertIcon1 {
+  flex-grow: 0;
+  margin-right: 0.5rem;
+  margin-left: 0.5rem;
+  margin-top: 1rem;
+}
+
+.searchDiv4 {
+  display: flex;
+  margin-top: 0.5rem;
+}
+
+.searchDiv5 {
+  flex-grow: 1;
+  padding-left: 0.5rem;
+  padding-right: 1.5rem;
+}
+
+.searchDiv6 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.searchSearchIcon1 {
+  flex-grow: 0;
+  margin-right: 0.5rem;
+  margin-left: 0.5rem;
+  margin-top: 1rem;
+}
+
+.selectionDiv1 {
+  border-width: 1px;
+
+  border-radius: 0.25rem;
+
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+    0 4px 6px -2px rgba(0, 0, 0, 0.05);
+
+  @media (min-width: 768px) {
+    border-radius: 0.5rem;
+  }
+}
+
+.selectionStyledListItem1 {
+  border-radius: 0.25rem;
+}
+
+.selectionDiv2 {
+  display: flex;
+  justify-content: center;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+.selectionButton1 {
+  padding-right: 1rem;
+  padding-left: 1rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  font-weight: 700;
+  color: #fff;
+  background-color: #4299e1;
+  border-bottom-width: 4px;
+  border-color: #2b6cb0;
+  border-radius: 0.25rem;
+}
