@@ -37,6 +37,7 @@ const routes = [
     title: 'ResultsPage Mockup'
   }
 ];
+
 /**
  * Central Controller of the Application.
  * Routing with <Router /> is in index.js.

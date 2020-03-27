@@ -16,7 +16,7 @@ import ShareIcon from '@material-ui/icons/Share';
 import MapIcon from '@material-ui/icons/Map';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import EmailIcon from '@material-ui/icons/Email';
-
+import './ResultsPage.css';
 /**
  * Central Component for ResultsPage meta-component.
  * Consumed in App.js
@@ -29,9 +29,9 @@ export default function ResultsPage() {
   return (
     <PageLayoutV2>
       <PageHeader>
-        <div className='text-gray-600'>
-          from <span className='text-gray-900'>{startingPoint}</span> <br />
-          to <span className='text-gray-900'>{destination}</span>{' '}
+        <div className='PageHeaderDiv1'>
+          from <span className='PageHeaderSpan1'>{startingPoint}</span> <br />
+          to <span className='PageHeaderSpan1'>{destination}</span>{' '}
         </div>
         <ResourceWrapper
           mode={mode}
@@ -56,7 +56,7 @@ function ResourceWrapper({ mode, startingPoint, destination }) {
 function ResultsWrapper({ resource }) {
   return (
     <div>
-      <hr className='my-10 border'></hr>
+      <hr className='resultsWrapperHr1'></hr>
       <ErrorBoundary fallback={<div>Error in loading data</div>}>
         <Suspense fallback={<div>Loading...</div>}>
           <ResultsDetailV2 resource={resource}></ResultsDetailV2>
@@ -150,11 +150,11 @@ function ResultsCell({
 
   return (
     <Fragment>
-      <StyledListItem className='p-4 font-normal bg-gray-100 border shadow-lg md:rounded-lg '>
+      <StyledListItem className='resultsCellStyledListItem1'>
         <div onClick={() => setSelected(!selected)}>
-          <div className='flex justify-between'>
-            <div className='flex items-center'>
-              <div className='pr-4 text-gray-600 hover:text-black'>
+          <div className='resultsCellDiv1'>
+            <div className='resultsCellDiv2'>
+              <div className='esultsCellDiv3'>
                 {selected ? (
                   <StyledRotatedArrow>
                     <ArrowForwardIosIcon
@@ -167,13 +167,13 @@ function ResultsCell({
                   ></ArrowForwardIosIcon>
                 )}
               </div>
-              <div className='text-2xl font-light'>{departureTime}</div>
+              <div className='resultsCellDiv4'>{departureTime}</div>
             </div>
             <span className={`text-2xl text-${routeColor}-600`}>
               {durationInTraffic}
             </span>
           </div>
-          <div className='flex items-center justify-end pl-8 text-gray-600'>
+          <div className='resultsCellDiv5'>
             <div>Arrive around {arrivalTime}</div>
           </div>
         </div>
@@ -194,12 +194,14 @@ function ResultsCellSelected({ startingPoint, destination, travelMode }) {
 
   return (
     <Fragment>
-      <hr className='my-4'></hr>
-      <div className='pl-8'>
-        <div className='flex items-center'>
-          <MapIcon className='mr-3'></MapIcon>
+      <hr className='resultsCellSelectedHr1'></hr>
+      <div className='resultsCellSelectedDiv1'>
+        <div className='resultsCellSelectedDiv2'>
+          <MapIcon className='resultsCellSelectedMapIcon1'></MapIcon>
           <a href={googleMapUrl} target='_blank'>
-            <span className='text-blue-600'>Open in Google Maps</span>
+            <span className='resultsCellSelectedSpan1'>
+              Open in Google Maps
+            </span>
           </a>
         </div>
       </div>
@@ -210,11 +212,9 @@ function ResultsCellSelected({ startingPoint, destination, travelMode }) {
 // Layout
 function PageLayoutV2({ children }) {
   return (
-    <div className='relative w-full max-w-screen-xl px-6 pt-8 pb-10 mx-auto'>
-      <div className='-mx-6'>
-        <div className='max-w-2xl px-6 mx-auto text-center sm:text-left'>
-          {children}
-        </div>
+    <div className='pageLayoutV2Div1'>
+      <div className='pageLayoutV2Div2'>
+        <div className='pageLayoutV2Div3'>{children}</div>
       </div>
     </div>
   );
@@ -224,12 +224,12 @@ function PageHeader({ children }) {
   return (
     <div id='content'>
       <div id='app' className='flex'>
-        <div className='w-full pt-12 pb-16 lg:pt-28'>
-          <div className='max-w-3xl mb-4'>
-            <h1 className='text-3xl font-light'>When Should I Leave?</h1>
+        <div className='pageHeaderDiv1'>
+          <div className='pageHeaderDiv2'>
+            <h1 className='pageHeaderH1'>When Should I Leave?</h1>
           </div>
           <div className=''>
-            <div className='w-full max-w-3xl mx-auto'>{children}</div>
+            <div className='pageHeaderDiv3'>{children}</div>
           </div>
         </div>
       </div>
