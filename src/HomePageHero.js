@@ -12,7 +12,7 @@ import './HomePageHero.css';
 
 export default function HomePageHero({ handleScroll }) {
   return (
-    <div>
+    <div id='home-page-hero'>
       <div id='header'>
         {/* <div className='pt-24 bg-gray-100 lg:pt-0'> */}
         <div className='div1'>

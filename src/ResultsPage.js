@@ -16,7 +16,7 @@ import ShareIcon from '@material-ui/icons/Share';
 import MapIcon from '@material-ui/icons/Map';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import EmailIcon from '@material-ui/icons/Email';
-import './ResultsPage.css';
+// import './ResultsPage.css';
 /**
  * Central Component for ResultsPage meta-component.
  * Consumed in App.js
@@ -27,7 +27,7 @@ export default function ResultsPage() {
   let { mode, startingPoint, destination } = useParams();
 
   return (
-    <PageLayoutV2>
+    <PageLayoutV2 id='results-page'>
       <PageHeader>
         <div className='PageHeaderDiv1'>
           from <span className='PageHeaderSpan1'>{startingPoint}</span> <br />

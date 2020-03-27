@@ -8346,6 +8346,165 @@ video {
   z-index: auto;
 }
 
+#results-page .PageHeaderDiv1 {
+  color: #718096;
+}
+
+#results-page .PageHeaderSpan1 {
+  color: #1a202c;
+}
+
+#results-page .resultsWrapperHr1 {
+  margin-top: 2.5rem;
+  margin-bottom: 2.5rem;
+  border-width: 1px;
+}
+
+#results-page .resultsCellStyledListItem1 {
+  padding: 1rem;
+  font-weight: 400;
+  background-color: #f7fafc;
+  border-width: 1px;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+      0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  /* @media (min-width: 768px) {
+    border-radius: 0.5rem;
+  } */
+}
+
+#results-page .resultsCellDiv1 {
+  display: flex;
+  justify-content: space-between;
+}
+
+#results-page .resultsCellDiv2 {
+  display: flex;
+  align-items: center;
+}
+
+#results-page .resultsCellDiv3 {
+  padding-right: 1rem;
+  color: #718096;
+}
+
+#results-page .resultsCellDiv3:hover {
+  color: #000;
+}
+
+#results-page .resultsCellDiv4 {
+  font-size: 1.5rem;
+  font-weight: 300;
+}
+
+#results-page .resultsCellDiv5 {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-left: 2rem;
+  color: #718096;
+}
+
+#results-page .resultsCellSelectedHr1 {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+#results-page .resultsCellSelectedDiv1 {
+  padding-left: 2rem;
+}
+
+#results-page .resultsCellSelectedDiv2 {
+  display: flex;
+  align-items: center;
+}
+
+#results-page .resultsCellSelectedMapIcon1 {
+  margin-right: 0.75rem;
+}
+
+#results-page .resultsCellSelectedSpan1 {
+  color: #3182ce;
+}
+
+#results-page .pageLayoutV2Div1 {
+  position: relative;
+  width: 100%;
+  max-width: 1280px;
+  padding-right: 1.5rem;
+  padding-left: 1.5rem;
+  padding-top: 2rem;
+  padding-bottom: 2.5rem;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+#results-page .pageLayoutV2Div2 {
+  margin-right: -1.5rem;
+  margin-left: -1.5rem;
+}
+
+#results-page .pageLayoutV2Div3 {
+  max-width: 42rem;
+  padding-right: 1.5rem;
+  padding-left: 1.5rem;
+  margin-right: auto;
+  margin-left: auto;
+  text-align: center;
+  /* @media (min-width: 640px) {
+    text-align: left;
+  } */
+}
+
+#results-page .pageHeaderDiv1 {
+  width: 100%;
+  padding-top: 3rem;
+  padding-bottom: 4rem;
+  /* @media (min-width: 1024px) {
+    padding-top: 6rem;
+  } */
+}
+
+#results-page .pageHeaderDiv2 {
+  max-width: 48rem;
+  margin-bottom: 1rem;
+}
+
+#results-page .pageHeaderH1 {
+  font-size: 1.875rem;
+  font-weight: 300;
+}
+
+#results-page .pageHeaderDiv3 {
+  width: 100%;
+  max-width: 48rem;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+@media (min-width: 1024px) {
+  #results-page .pageHeaderDiv1 {
+    padding-top: 6rem;
+  }
+}
+
+@media (min-width: 768px) {
+  #results-page .resultsCellStyledListItem1 {
+    border-radius: 0.5rem;
+  }
+}
+
+@media (min-width: 640px) {
+  #results-page .pageLayoutV2Div3 {
+    text-align: left;
+  }
+}
+
+/* @tailwind base; */
+
+/* @tailwind components; */
+
+/* @tailwind utilities; */
+
 @media (min-width: 640px) {
   .sm\:sr-only {
     position: absolute;
