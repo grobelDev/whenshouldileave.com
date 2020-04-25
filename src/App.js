@@ -37,6 +37,7 @@ const routes = [
     title: 'ResultsPage Mockup'
   }
 ];
+
 /**
  * Central Controller of the Application.
  * Routing with <Router /> is in index.js.
@@ -124,13 +125,5 @@ const StyledNav = styled.nav`
     font-weight: bold;
     margin-bottom: 1.5rem;
     font-size: 1.5rem;
-  }
-`;
-
-const HorizontalScrollingOff = styled.div`
-  html,
-  body {
-    max-width: 100% !important;
-    overflow-x: hidden !important;
   }
 `;
